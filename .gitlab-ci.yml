@@ -1,0 +1,15 @@
+image: node:5-onbuild
+
+stages:
+  - build
+  - test
+  - deploy
+
+job1:
+  stage: build
+  script:
+    - echo Hello
+  only:
+    - master
+  tags:
+    - docker
