@@ -1,15 +1,32 @@
 image: node:5-onbuild
 
+before_script:
+  - node -v
+  - npm -v
+  - npm install -g gulp
+  - npm install
+
 stages:
   - build
   - test
   - deploy
 
-job1:
+build_job:
   stage: build
   script:
-    - echo Hello
+    - gulp build
   only:
     - master
   tags:
     - docker
+    - node
+
+test_job:
+  stage: test
+  script:
+    - npm test
+  only:
+    - master
+  tags:
+    - docker
+    - node
