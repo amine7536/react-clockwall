@@ -17,24 +17,30 @@ import vars from 'postcss-simple-vars';
 import extend from 'postcss-simple-extend';
 import cssnano from 'cssnano';
 import htmlReplace from 'gulp-html-replace';
-import imagemin from 'gulp-imagemin';
-import pngquant from 'imagemin-pngquant';
 import runSequence from 'run-sequence';
 
 const paths = {
   bundle: 'app.js',
   srcJsx: 'src/Index.js',
   srcCss: 'src/**/*.css',
-  srcImg: 'src/images/**',
   dist: 'dist',
   distJs: 'dist/js',
-  distImg: 'dist/images'
 };
 
+/* https://github.com/isaacs/rimraf
+*  The UNIX command rm -rf for node
+*
+*  Description : Clean everthing under dist folder
+*/
 gulp.task('clean', cb => {
   rimraf('dist', cb);
 });
 
+/* https://www.browsersync.io/docs/gulp/
+*  Time-saving synchronised browser testing
+*
+*  Description: Start Development Server with LiveReload
+*/
 gulp.task('browserSync', () => {
   browserSync({
     server: {
@@ -42,6 +48,12 @@ gulp.task('browserSync', () => {
     }
   });
 });
+
+/* https://www.npmjs.com/package/watchify
+*  Watch mode for browserify builds
+*
+*  Description: Watch for changes in source files
+*/
 
 gulp.task('watchify', () => {
   let bundler = watchify(browserify(paths.srcJsx, watchify.args));
@@ -60,6 +72,14 @@ gulp.task('watchify', () => {
   return rebundle();
 });
 
+/* http://browserify.org
+*  Browserify lets you require('modules') in the browser
+*
+*  http://babeljs.io
+*  Use next generation JavaScript, today
+*
+*  Description: Tranpiles and Minify all JS source files from ES6 to ES5
+*/
 gulp.task('browserify', () => {
   browserify(paths.srcJsx)
   .transform(babelify)
@@ -72,6 +92,11 @@ gulp.task('browserify', () => {
   .pipe(gulp.dest(paths.distJs));
 });
 
+/* https://www.npmjs.com/package/gulp-postcss
+*  PostCSS is a tool for transforming styles with JS plugins
+*
+*  Description: Transform CSS using plugins : autoprefixer & cssnano
+*/
 gulp.task('styles', () => {
   gulp.src(paths.srcCss)
   .pipe(sourcemaps.init())
@@ -81,22 +106,22 @@ gulp.task('styles', () => {
   .pipe(reload({stream: true}));
 });
 
+/* https://www.npmjs.com/package/gulp-html-replace
+*  Replace build blocks in HTML
+*
+*  Description: Build dist/index.html
+*/
 gulp.task('htmlReplace', () => {
   gulp.src('index.html')
-  .pipe(htmlReplace({css: 'styles/main.css', js: 'js/app.js'}))
+  .pipe(htmlReplace({css: ['styles/reset.css','styles/main.css'], js: 'js/app.js'}))
   .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('images', () => {
-  gulp.src(paths.srcImg)
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    }))
-    .pipe(gulp.dest(paths.distImg));
-});
-
+/* https://github.com/adametry/gulp-eslint
+*  A Gulp plugin for identifying and reporting on patterns found in ECMAScript/JavaScript code
+*
+*  Description: Code analysis tool
+*/
 gulp.task('lint', () => {
   gulp.src(paths.srcJsx)
   .pipe(eslint())
@@ -108,11 +133,23 @@ gulp.task('watchTask', () => {
   gulp.watch(paths.srcJsx, ['lint']);
 });
 
+/*
+*  Description: DEVELEMENT MODE
+*  - Start dev server on port 3000
+*  - Start browserSync console on port 3001
+*  - Watch sources files for changes
+*  - LiveReload
+*  - Code Lint
+*/
 gulp.task('watch', cb => {
-  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'styles', 'lint', 'images'], cb);
+  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'styles', 'lint'], cb);
 });
 
+/*
+*  Description: PRODUCTION
+*  - Build production package under dist folder
+*/
 gulp.task('build', cb => {
   process.env.NODE_ENV = 'production';
-  runSequence('clean', ['browserify', 'styles', 'htmlReplace', 'images'], cb);
+  runSequence('clean', ['browserify', 'styles', 'htmlReplace'], cb);
 });
