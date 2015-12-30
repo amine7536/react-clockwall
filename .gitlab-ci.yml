@@ -13,3 +13,4 @@ job1:
     - master
   tags:
     - docker
+    - node
