@@ -5,7 +5,7 @@ import Clock from './components/Clock';
 window.React = React;
 
 var clocks = [
-  { id: 1, town: 'New York', offset: '-05:00', locale: 'en', showTown: true, showDate: false },
+  { id: 1, town: 'New York', offset: '-05:00', locale: 'en', showTown: true, showDate: true },
   { id: 2, town: 'Casablanca', offset: '+00:00', locale: 'ar', showTown: true, showDate: true },
   { id: 3, town: 'Paris', offset: '+01:00', locale: 'fr', showTown: true, showDate: true },
   { id: 4, town: 'Tokyo', offset: '+09:00', locale: 'ja', showTown: true, showDate: true },
