@@ -16,6 +16,7 @@ export default React.createClass({
 
   getInitialState: function() {
     /* Set Default Props Values */
+    this.props.config.id = this.props.config.id || `pixelfactory-${this.props.config.town}`;
     this.props.config.locale = this.props.config.locale || 'en';
     this.props.config.showTown = this.props.config.showTown || true;
     this.props.config.showTimezone = this.props.config.showTimezone || true;
@@ -73,7 +74,7 @@ export default React.createClass({
     var config = this.props.config;
 
     return (
-      <div className="clock">
+      <div id={config.id} className="clock">
       {config.showTown ?
         <h1 className="town">{config.town}</h1> :
       null}

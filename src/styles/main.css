@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900&subset=latin,latin-ext,greek,cyrillic,greek-ext,vietnamese,cyrillic-ext);
 
 body {
-	 background: #202020;
+	 background: #000;
    color: #bbbbbb;
 }
 
@@ -38,15 +38,14 @@ ul li {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 12px;
-	border: 1px solid #333333;
-	color: #E8E9EB;
+	/*border: 1px solid #333333;*/
+	color: #FFFFFF;
   text-align: left;
   padding: 15px;
 }
 
 .time {
   font-size: 6em;
-	color: #E0DFD5;
 }
 
 .minutes {
@@ -55,7 +54,6 @@ ul li {
 
 .seconds {
   font-size: 0.7em;
-  color: #E4B363;
 }
 
 .seconds sup {
@@ -79,9 +77,6 @@ ul li {
 	position: relative;
 	-moz-animation: blink 1s ease infinite;
 	-webkit-animation: blink 1s ease infinite;
-	padding-left: 5px;
-	padding-right: 5px;
-	color: #E0DFD5;
 }
 
 @-webkit-keyframes blink {
@@ -100,4 +95,28 @@ ul li {
   0% {opacity:1.0;}
   50% {opacity:0;}
   100% {opacity:1.0;}
+}
+
+#clock1 {
+	background: #05668D;
+}
+
+#clock2 {
+	background: #028090;
+}
+
+#clock3 {
+	background: #00A896;
+}
+
+#clock4 {
+	background: #02C39A;
+}
+
+#clock5 {
+	background: #F0F3BD;
+}
+
+#clock6 {
+	background: #05668D;
 }
