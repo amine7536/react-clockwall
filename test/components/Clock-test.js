@@ -2,20 +2,22 @@ import React from 'react';
 import ReactTestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 import Clock from '../../src/components/Clock';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 
 describe('Clock: ', () => {
+  var config={ town: 'Paris', offset: 'Europe/Paris', locale: 'fr', showTown: true, showDate: true };
+
   const shallowRenderer = ReactTestUtils.createRenderer();
-  shallowRenderer.render(<Clock config={{ id: 3, town: 'Paris', offset: '+01:00', locale: 'fr', showTown: true, showDate: true }}/>);
+  shallowRenderer.render(<Clock config={{ town: 'Paris', offset: 'Europe/Paris', locale: 'fr', showTown: true, showDate: true }}/>);
   const clock = shallowRenderer.getRenderOutput();
 
   // Should call Component Method instead, to be changed in next version
-  moment.locale('fr');
-  let now = moment().utcOffset("+01:00");
+  moment.locale(config.locale);
+  let now = moment().tz(config.offset);
   // Day
   let weekdays = moment.weekdays();
-  let dayName = weekdays[now.weekday()];
+  let dayName = weekdays[now.get('day')];
   let day = now.get('date');
   // Month
   let months = moment.months();

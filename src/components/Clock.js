@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import './Clock-locales';
 
 export default React.createClass({
@@ -14,11 +14,11 @@ export default React.createClass({
 
   getMoment: function(offset, locale){
     moment.locale(locale);
-    let now = moment().utcOffset(offset);
+    let now = moment().tz(offset);
 
     // Day
     let weekdays = moment.weekdays();
-    let dayName = weekdays[now.weekday()];
+    let dayName = weekdays[now.get('day')];
     let day = now.get('date');
 
     // Month

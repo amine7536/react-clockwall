@@ -14,6 +14,21 @@ ReactDOM.render(
 );
 ```
 
+```bash
+amine@pixie ~/Dev/pixelfactory.io/clockwall> npm run test
+
+> clockwall@0.1.6 test ~/Dev/pixelfactory.io/clockwall
+> mocha --reporter nyan --compilers js:babel/register --recursive
+
+21  -_-_-_-_-_-_-_-_-_-_-__,------,
+0   -_-_-_-_-_-_-_-_-_-_-__|  /\_/\
+0   -_-_-_-_-_-_-_-_-_-_-_~|_( ^ .^)
+    -_-_-_-_-_-_-_-_-_-_-_ ""  ""
+
+ 21 passing (69ms)
+
+```
+
 ## Usage
 
 __Install the dependencies:__
