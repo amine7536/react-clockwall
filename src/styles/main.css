@@ -30,18 +30,23 @@ ul li {
   align-content: flex-end;
 }
 
+.clockwall{
+ /* PlaceHolder */
+}
+
 .clock {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 12px;
-	border: 1px solid #333;
-	color: #fff;
+	border: 1px solid #333333;
+	color: #E8E9EB;
   text-align: left;
-  padding: 5px;
+  padding: 15px;
 }
 
 .time {
   font-size: 6em;
+	color: #E0DFD5;
 }
 
 .minutes {
@@ -50,7 +55,7 @@ ul li {
 
 .seconds {
   font-size: 0.7em;
-  color: yellow;
+  color: #E4B363;
 }
 
 .seconds sup {
@@ -65,12 +70,17 @@ ul li {
   font-size: 2em;
 }
 
+.timezone {
+	font-weight: lighter;
+}
+
 .points {
 	position: relative;
 	-moz-animation: blink 1s ease infinite;
 	-webkit-animation: blink 1s ease infinite;
 	padding-left: 5px;
 	padding-right: 5px;
+	color: #E0DFD5;
 }
 
 @-webkit-keyframes blink {

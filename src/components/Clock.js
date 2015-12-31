@@ -8,13 +8,14 @@ export default React.createClass({
 
   getInitialState: function() {
     return {
-        currentDate: this.getMoment(this.props.config.offset, this.props.config.locale)
+        currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale)
       }
   },
 
-  getMoment: function(offset, locale){
+  getMoment: function(timezone, locale){
     moment.locale(locale);
-    let now = moment().tz(offset);
+    let now = moment().tz(timezone);
+    let tz = moment().tz(timezone).format('z');
 
     // Day
     let weekdays = moment.weekdays();
@@ -33,7 +34,7 @@ export default React.createClass({
     let minutes = now.get('minute');
     let seconds = now.get('second');
 
-    // return time as a string
+    // return time object
     return {
       day: day,
       dayName: dayName,
@@ -42,13 +43,14 @@ export default React.createClass({
       year: year,
       hours:   ( hours < 10 ? "0" : "" ) + hours,
       minutes: ( minutes < 10 ? "0" : "" ) + minutes,
-      seconds: ( seconds < 10 ? "0" : "" ) + seconds
+      seconds: ( seconds < 10 ? "0" : "" ) + seconds,
+      timezone: tz
     };
   },
 
   componentDidMount: function() {
     setInterval(() => {
-      this.setState({ currentDate: this.getMoment(this.props.config.offset, this.props.config.locale) })
+      this.setState({ currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale) })
     }, 1000)
   },
 
@@ -58,6 +60,9 @@ export default React.createClass({
       <div className="clock">
       {config.showTown ?
         <h1 className="town">{config.town}</h1> :
+      null}
+      {config.showTimezone ?
+        <h2 className="timezone">{config.timezone} {this.state.currentDate.timezone}</h2>:
       null}
         <ul className="time">
           <li className="hours">{this.state.currentDate.hours}</li>
