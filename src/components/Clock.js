@@ -6,7 +6,21 @@ import './Clock-locales';
 
 export default React.createClass({
 
+  propTypes: {
+    /* Required */
+    config: React.PropTypes.shape({
+      town: React.PropTypes.string.isRequired,
+      timezone: React.PropTypes.string.isRequired
+    })
+  },
+
   getInitialState: function() {
+    /* Set Default Props Values */
+    this.props.config.locale = this.props.config.locale || 'en';
+    this.props.config.showTown = this.props.config.showTown || true;
+    this.props.config.showTimezone = this.props.config.showTimezone || true;
+    this.props.config.showDate = this.props.config.showDate || true;
+
     return {
         currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale)
       }
@@ -26,6 +40,7 @@ export default React.createClass({
     let months = moment.months();
     let monthName = months[now.month()];
     let month = now.get('month');
+
     // Year
     let year = now.get('year');
 
@@ -56,6 +71,7 @@ export default React.createClass({
 
   render() {
     var config = this.props.config;
+
     return (
       <div className="clock">
       {config.showTown ?
