@@ -14,8 +14,8 @@ ReactDOM.render(
 );
 ```
 
-```bash
-amine@pixie ~/Dev/pixelfactory.io/clockwall> npm run test
+```
+#> npm run test
 
 > clockwall@0.1.6 test ~/Dev/pixelfactory.io/clockwall
 > mocha --reporter nyan --compilers js:babel/register --recursive
