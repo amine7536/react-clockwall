@@ -1,9 +1,32 @@
-'use strict';
-/**
- * @fileOverview Clock Component
- * @author amine.benseddik@pixelfactory.io
- * @module Components
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Clock.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Clock.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
 
 import React from 'react';
 import moment from 'moment-timezone';
@@ -14,10 +37,10 @@ import './Clock-locales';
 *
 * Usage :
 * ```html
-* <Clock config={{ timezone: 'Europe/Paris', town: 'Paris'}} />
+* &lt;Clock config={{ timezone: 'Europe/Paris', town: 'Paris'}} />
 * ```
 * Required params :
-* - **config.timezone** : [ISO Timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+* - **config.timezone** : ISO Timezone [https://en.wikipedia.org/wiki/List_of_tz_database_time_zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 * - **config.town** : Town name to display
 *
 * Defaults values :
@@ -28,14 +51,11 @@ import './Clock-locales';
 * - **config.showDate** : Include DATE in rendered html (default: ```true```)
 *
 * @extends React.Component
-* @requires moment-timezone
 */
 class Clock extends React.Component {
 
   /**
   * @description
-  * #### constructor(props)
-  *
   * Set Defaults values
   * Set Inital State : calls **getMoment()**
   *
@@ -76,9 +96,9 @@ class Clock extends React.Component {
   *   month: month,
   *   monthName: monthName,
   *   year: year,
-  *   hours:   ( hours < 10 ? "0" : "" ) + hours,
-  *   minutes: ( minutes < 10 ? "0" : "" ) + minutes,
-  *   seconds: ( seconds < 10 ? "0" : "" ) + seconds,
+  *   hours:   ( hours &lt; 10 ? "0" : "" ) + hours,
+  *   minutes: ( minutes &lt; 10 ? "0" : "" ) + minutes,
+  *   seconds: ( seconds &lt; 10 ? "0" : "" ) + seconds,
   *   timezone: tz
   * }
   ```
@@ -113,16 +133,16 @@ class Clock extends React.Component {
       month: month,
       monthName: monthName,
       year: year,
-      hours:   ( hours < 10 ? "0" : "" ) + hours,
-      minutes: ( minutes < 10 ? "0" : "" ) + minutes,
-      seconds: ( seconds < 10 ? "0" : "" ) + seconds,
+      hours:   ( hours &lt; 10 ? "0" : "" ) + hours,
+      minutes: ( minutes &lt; 10 ? "0" : "" ) + minutes,
+      seconds: ( seconds &lt; 10 ? "0" : "" ) + seconds,
       timezone: tz
     };
   }
 
   /**
   * React Component Method : [https://facebook.github.io/react/docs/component-specs.html](https://facebook.github.io/react/docs/component-specs.html)
-  * Calls ```getMoment()``` every seconds and stores ```currentDate``` in component ```this.state```.
+  * Calls getMoment() every seconds and stores ```currentDate``` in component ```this.state```.
   */
   componentDidMount() {
     setInterval(() => {
@@ -131,29 +151,29 @@ class Clock extends React.Component {
   }
 
   /**
-  * Renders the Clock
+  * Render Clock component
   */
   render() {
     var config = this.props.config;
 
     return (
-      <div id={config.id} className="clock">
+      &lt;div id={config.id} className="clock">
       {config.showTown ?
-        <h1 className="town">{config.town}</h1> :
+        &lt;h1 className="town">{config.town}&lt;/h1> :
       null}
       {config.showTimezone ?
-        <h2 className="timezone">{config.timezone} {this.state.currentDate.timezone}</h2>:
+        &lt;h2 className="timezone">{config.timezone} {this.state.currentDate.timezone}&lt;/h2>:
       null}
-        <ul className="time">
-          <li className="hours">{this.state.currentDate.hours}</li>
-          <li className="points">:</li>
-          <li className="minutes">{this.state.currentDate.minutes}</li>
-          <li className="seconds"><sup>{this.state.currentDate.seconds}</sup></li>
-        </ul>
+        &lt;ul className="time">
+          &lt;li className="hours">{this.state.currentDate.hours}&lt;/li>
+          &lt;li className="points">:&lt;/li>
+          &lt;li className="minutes">{this.state.currentDate.minutes}&lt;/li>
+          &lt;li className="seconds">&lt;sup>{this.state.currentDate.seconds}&lt;/sup>&lt;/li>
+        &lt;/ul>
       {config.showDate ?
-        <h1 className="date">{this.state.currentDate.dayName} {this.state.currentDate.day} {this.state.currentDate.monthName} {this.state.currentDate.year}</h1> :
+        &lt;h1 className="date">{this.state.currentDate.dayName} {this.state.currentDate.day} {this.state.currentDate.monthName} {this.state.currentDate.year}&lt;/h1> :
       null}
-      </div>
+      &lt;/div>
     );
   }
 
@@ -189,3 +209,26 @@ Clock.propTypes = {
 }
 
 export default Clock;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Jan 03 2016 19:15:25 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+        "include": ["./src/components"],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "docs"
+    },
+    "plugins": ["plugins/markdown"],
+    "markdown"  : {
+      "parser"   : "gfm",
+      "hardwrap" : true
+    },
+    "templates": {
+            "cleverLinks": false,
+            "monospaceLinks": false,
+            "default": {
+                "outputSourceFiles": true
+            },
+            "systemName"      : "pixelfactory.io Clock",
+            "footer"          : "",
+            "copyright"       : "",
+            "navType"         : "vertical",
+            "theme"           : "yeti",
+            "linenums"        : true,
+            "collapseSymbols" : false,
+            "inverseNav"      : true
+        },
+    "opts": {
+        "encoding": "utf8",
+        "destination": "docs/js",
+        "recurse": true,
+        "private": true
+    }
+}

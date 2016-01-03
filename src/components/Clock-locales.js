@@ -1,8 +1,8 @@
-/*
- Import all moment.js locales
- ES6 Import state doesn't support Lazy Loading
- A Lazy Loading mechanizm will be implemented later, for now we load everthing
- from this file.
+/**
+* Import all moment.js locales
+* ES6 Import state doesn't support Lazy Loading
+* A Lazy Loading mechanizm will be implemented later, for now we load everthing
+* from this file.
 */
 import 'moment/locale/af'
 import 'moment/locale/ar-ma'

@@ -12,9 +12,10 @@
 1.3.0 : Toggle Town and Date display --> Done
 1.4.0 : Config prop declaration --> Done
 1.4.1 : Use moment-timezone
+1.4.2 : Use ES6 Class
+
 
 ToDo :
 Use JSDoc
-Use ES6 Class
 Switch to Webpack
 Switch to SCSS
