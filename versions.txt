@@ -13,9 +13,10 @@
 1.4.0 : Config prop declaration --> Done
 1.4.1 : Use moment-timezone
 1.4.2 : Use ES6 Class
+1.4.3 : Use JSDoc
 
 
 ToDo :
-Use JSDoc
+Use local font files
 Switch to Webpack
 Switch to SCSS

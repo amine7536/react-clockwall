@@ -10,7 +10,7 @@
 	<![endif]-->
 	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
 
-	<link type="text/css" rel="stylesheet" href="styles/site.yeti.css">
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
 
 </head>
 
@@ -91,13 +91,20 @@
 
     <section class="readme-section">
         <article><h1>Clockwall</h1><p>Digital Clock made with React JS.</p>
-<h2>Prerequistes</h2><ul>
-<li>nodejs</li>
-<li>npm</li>
-<li>browser support</li>
+<h2>Features</h2><ul>
+<li>Customizable with CSS</li>
+<li>Built-in Internationalization (i18n)</li>
+<li>Light, Create as many clocks as you want</li>
+<li>Unit tested</li>
+<li>ES2015, Future-proof javascript</li>
 </ul>
-<h2>BabelJS</h2><h2>ReactJS</h2><h2>Preview</h2><p>A Demo of the Clock component is availabe in folder demo.<br>Open <code>demo/index.html</code> in your Browser.</p>
-<p><strong>Todo</strong>: add screenshot here</p>
+<h2>Stack</h2><ul>
+<li><strong>NodeJS</strong> : <a href="https://nodejs.org">https://nodejs.org</a></li>
+<li><strong>BabelJS</strong> : <a href="https://babeljs.io">https://babeljs.io</a></li>
+<li><strong>ReactJS</strong> : <a href="https://facebook.github.io/react/">https://facebook.github.io/react/</a></li>
+</ul>
+<h2>Preview</h2><p>A Demo of the Clock component is availabe in folder <code>demo</code>.<br>Open <code>demo/index.html</code> in your Browser.</p>
+<p><img src="img/clockwall-demo.png" alt="Clockwall-Demo"></p>
 <h1>Build</h1><p><strong>Please note that any commands we tell you to run must be ran from the project's root folder.</strong></p>
 <h2>Gulp task runner</h2><p><a href="http://gulpjs.com">Gulp</a> is an Task / Build runner. This project relies on Gulp for automation of tasks.<br>In order to use <a href="http://gulpjs.com">Gulp</a> you will need to have <a href="https://nodejs.org">Node.js</a> installed on your computer. Also insure that you have <a href="https://www.npmjs.org/">NPM</a> installed. You can check if these are installed properly by opening up a Terminal (Linux or Mac) or Command Prompt (Windows) and entering the command: <code>node --version</code> and <code>npm --version</code>. These commands should output something similar to &quot;v5.1.1&quot; and &quot;3.3.12&quot; respectively.</p>
 <p>Once you have installed these programs, you'll need to get <strong>gulp</strong>. You can achieve this by running the following command:</p>
@@ -136,43 +143,66 @@ UI External: http://172.16.1.174:3001
 [BS] 4 files changed (main.css.map, main.css, reset.css.map, reset.css)
 [BS] 1 file changed (app.js)
 [23:10:26] Finished 'watchify' after 5.39 s
-[23:10:26] Finished 'watch' after 5.58 s</code></pre><pre class="prettyprint source lang-javascript"><code>ReactDOM.render(
-  &lt;div className=&quot;flex-container&quot;>
-    &lt;Clock config={{ town: 'Paris', offset: '+01:00', locale: 'fr', showTown: true, showDate: true }} />
-  &lt;/div>
-  , document.getElementById('content')
-);</code></pre><pre class="prettyprint source"><code>#> npm run test
+[23:10:26] Finished 'watch' after 5.58 s</code></pre><p>The Development environment uses <a href="https://www.browsersync.io">browserSync</a> to enable <strong>LiveReload</strong>. Your browser will be automatically as you change HTML, CSS and Javascript files or other files under <code>src</code> folder.    </p>
+<h2>Running test</h2><p>The project test can be found in the folder <code>test/components</code>. You can run the tests by running the command: <code>npm test</code></p>
+<pre class="prettyprint source"><code>user@pixelfactory.io> npm test
 
-> clockwall@0.1.6 test ~/Dev/pixelfactory.io/clockwall
+> clockwall@1.4.2 test /Dev/pixelfactory.io/clockwall
 > mocha --reporter nyan --compilers js:babel/register --recursive
 
-21  -_-_-_-_-_-_-_-_-_-_-__,------,
-0   -_-_-_-_-_-_-_-_-_-_-__|  /\_/\
-0   -_-_-_-_-_-_-_-_-_-_-_~|_( ^ .^)
-    -_-_-_-_-_-_-_-_-_-_-_ &quot;&quot;  &quot;&quot;
+ 24  -_-_-_-_-_-_-_-_-_-_-_-_-_,------,
+ 0   -_-_-_-_-_-_-_-_-_-_-_-_-_|   /\_/\
+ 0   -_-_-_-_-_-_-_-_-_-_-_-_-^|__( ^ .^)
+     -_-_-_-_-_-_-_-_-_-_-_-_-  &quot;&quot;  &quot;&quot;
 
- 21 passing (69ms)</code></pre><h2>Usage</h2><p><strong>Install the dependencies:</strong></p>
-<p><code>npm install</code></p>
-<p><strong>Test:</strong></p>
-<p><code>npm run test</code></p>
-<p><strong>Development mode with livereload:</strong></p>
-<p><code>npm run watch</code></p>
-<p><strong>When you are done, create a production ready version of the JS bundle:</strong></p>
-<p><code>npm run build</code></p>
-<h2>What's new in v0.1.6:</h2><ul>
-<li>React Router integration</li>
-<li>CSS processing via <a href="https://github.com/postcss/postcss">PostCSS</a><ul>
-<li>cssnano for minification</li>
-<li>nested</li>
-<li>extend</li>
-<li>vars</li>
-<li>autoprefixer</li>
+  24 passing (78ms)</code></pre><h1>Getting started</h1><h2>Basic Usage</h2><p>Simply <code>import Clock from './components/Clock';</code> and start using the <strong><Clock/></strong> component.</p>
+<pre class="prettyprint source lang-javascript"><code>ReactDOM.render(
+  &lt;div className=&quot;flex-container clockwall&quot;>
+      &lt;Clock config={{ timezone: 'Europe/Paris', town: 'Paris'}} />
+  &lt;/div>
+  , document.getElementById('content')
+);</code></pre><h2>Advanced Usage</h2><p><strong>Usage</strong> :</p>
+<pre class="prettyprint source lang-javascript"><code>import React from 'react';
+import ReactDOM from 'react-dom';
+import Clock from './components/Clock';
+
+window.React = React;
+
+var clocks = [
+  { id: 'clock1', town: 'New York', timezone: 'America/New_York' },
+  { id: 'clock2', town: 'الدار البيضاء', timezone: 'Africa/Casablanca', locale: 'fr' },
+  { id: 'clock3', town: 'Paris', timezone: 'Europe/Paris', locale: 'fr' },
+  { id: 'clock4', town: '香港', timezone: 'Asia/Hong_Kong', locale: 'zh-cn' },
+  { id: 'clock5', town: 'नई दिल्ली', timezone: 'Asia/Kolkata', locale: 'hi' },
+  { id: 'clock6', town: '東京', timezone: 'Asia/Tokyo', locale: 'ja' },
+  { id: 'clock7', town: 'Αθήνα', timezone: 'Europe/Athens', locale: 'el'},
+  { id: 'clock8', town: 'Москва', timezone: 'Europe/Moscow', locale: 'ru' },
+  { id: 'clock9', town: 'Hà Nội', timezone: 'Asia/Bangkok', locale: 'vi' },
+  { id: 'clock10', town: 'Sao Paulo', timezone: 'America/Sao_Paulo', locale: 'pt' },
+];
+
+ReactDOM.render(
+  &lt;div className=&quot;flex-container clockwall&quot;>
+    {clocks.map(clock =>
+      &lt;Clock key={clock.id} config={clock} />
+    )}
+  &lt;/div>
+  , document.getElementById('content')
+);</code></pre><p><strong>Required params</strong> :</p>
+<ul>
+<li>config.timezone : <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">ISO Timezone</a></li>
+<li>config.town : Town name to display</li>
 </ul>
-</li>
-<li>gulpifle written in ES6 (ES2015)</li>
-<li>better folder structure</li>
-<li>no predefined AJAX libraries (use <a href="https://github.com/github/fetch">Fetch</a> or <a href="https://github.com/visionmedia/superagent">Superagent</a> if you need one).</li>
-</ul></article>
+<p><strong>Defaults values</strong> :</p>
+<ul>
+<li>config.id : CSS <code>#id</code> (default: <code>pixelfactory-town</code>)</li>
+<li>config.locale : ISO language code (default: <code>en</code>)</li>
+<li>config.showTown : Include TOWN name in rendered html (default: <code>true</code>)</li>
+<li>config.showTimezone : Include TIMEZONE name in rendered html (default: <code>true</code>)</li>
+<li>config.showDate : Include DATE in rendered html (default: <code>true</code>)</li>
+</ul>
+<p><strong>Clock Class Definition</strong> can be found in <a href="/module-Components-Clock.html">Components-Clock</a></p>
+<h2>Customize</h2><h1>CHANGELOG</h1><p>1.0.0 : Initial start<br>1.0.0 : Project structure<br>1.1.0 : Clock components<br>1.1.1 : Using moment.js<br>1.1.1 : Unit Test<br>1.1.2 : Upgrade to React 0.14.3<br>1.1.2 : Upgrade Test Utils and React 0.14.5<br>1.1.3 : Adding more Tests<br>1.2.0 : Adding locales i18e<br>1.2.1 : Customize CSS<br>1.2.2 : Switch to FlexBox<br>1.3.0 : Toggle Town and Date display<br>1.4.0 : Config prop declaration<br>1.4.1 : Use moment-timezone<br>1.4.2 : Use ES6 Class</p></article>
     </section>
 
 
@@ -213,10 +243,14 @@ UI External: http://172.16.1.174:3001
 <footer>
 
 
+	<span class="copyright">
+	pixelfactory.io
+	</span>
+
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
 	
-		on 2016-01-03T23:37:08+01:00
+		on 2016-01-04T00:56:39+01:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

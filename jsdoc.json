@@ -20,9 +20,9 @@
             },
             "systemName"      : "pixelfactory.io Clock",
             "footer"          : "",
-            "copyright"       : "",
+            "copyright"       : "pixelfactory.io",
             "navType"         : "vertical",
-            "theme"           : "yeti",
+            "theme"           : "cosmo",
             "linenums"        : true,
             "collapseSymbols" : false,
             "inverseNav"      : true
