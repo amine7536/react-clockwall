@@ -4,18 +4,21 @@ import React from 'react';
 import moment from 'moment-timezone';
 import './Clock-locales';
 
-/** Clock component */
-export default React.createClass({
+/**
+* Class Clock Component
+* @extends React.Component
+*/
+export default class Clock extends React.Component {
 
-  propTypes: {
-    /* Required */
-    config: React.PropTypes.shape({
-      town: React.PropTypes.string.isRequired,
-      timezone: React.PropTypes.string.isRequired
-    })
-  },
+  /**
+  * Creates a new Clock Component
+  * Set its inital State
+  * Set defaults values for props
+  * @param props - React Component props https://facebook.github.io/react/docs/reusable-components.html
+  */
+  constructor(props) {
+    super(props);
 
-  getInitialState: function() {
     /* Set Default Props Values */
     this.props.config.id = this.props.config.id || `pixelfactory-${this.props.config.town}`;
     this.props.config.locale = this.props.config.locale || 'en';
@@ -23,12 +26,20 @@ export default React.createClass({
     this.props.config.showTimezone = this.props.config.showTimezone || true;
     this.props.config.showDate = this.props.config.showDate || true;
 
-    return {
-        currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale)
-      }
-  },
+    /* Set Initlal State */
+    this.state = {
+      currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale)
+    }
+  }
 
-  getMoment: function(timezone, locale){
+  /**
+  * Get currentDate
+  * Use moment.js and moment-timezone.js to calculate current time and date with the given timezone and locale
+  * @param {string} timezone - ISO Timezone from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  * @param {string} locale - ISO Language Code from http://www.w3schools.com/tags/ref_language_codes.asp
+  * @return {object} currentDate - Javascript object containing full date and time
+  */
+  getMoment(timezone, locale) {
     moment.locale(locale);
     let now = moment().tz(timezone);
     let tz = moment().tz(timezone).format('z');
@@ -63,14 +74,21 @@ export default React.createClass({
       seconds: ( seconds < 10 ? "0" : "" ) + seconds,
       timezone: tz
     };
-  },
+  }
 
-  componentDidMount: function() {
+  /**
+  * Start Time calculation
+  * Calls getMoemnt every seconds
+  */
+  componentDidMount() {
     setInterval(() => {
       this.setState({ currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale) })
     }, 1000)
-  },
+  }
 
+  /**
+  * Render Clock component
+  */
   render() {
     var config = this.props.config;
 
@@ -94,4 +112,13 @@ export default React.createClass({
       </div>
     );
   }
-});
+
+}
+
+Clock.propTypes = {
+  /* Required */
+  config: React.PropTypes.shape({
+    town: React.PropTypes.string.isRequired,
+    timezone: React.PropTypes.string.isRequired
+  })
+}
