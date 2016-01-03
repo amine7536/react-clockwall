@@ -11,6 +11,10 @@ var clocks = [
   { id: 'clock4', town: '香港', timezone: 'Asia/Hong_Kong', locale: 'zh-cn' },
   { id: 'clock5', town: 'नई दिल्ली', timezone: 'Asia/Kolkata', locale: 'hi' },
   { id: 'clock6', town: '東京', timezone: 'Asia/Tokyo', locale: 'ja' },
+  { id: 'clock7', town: 'Αθήνα', timezone: 'Europe/Athens', locale: 'el'},
+  { id: 'clock8', town: 'Москва', timezone: 'Europe/Moscow', locale: 'ru' },
+  { id: 'clock9', town: 'Hà Nội', timezone: 'Asia/Bangkok', locale: 'vi' },
+  { id: 'clock10', town: 'Sao Paulo', timezone: 'America/Sao_Paulo', locale: 'pt' },
 ];
 
 ReactDOM.render(
@@ -18,7 +22,6 @@ ReactDOM.render(
     {clocks.map(clock =>
       <Clock key={clock.id} config={clock} />
     )}
-    <Clock config={{town: 'Paris', timezone: 'Europe/Paris', locale: 'fr'}}/>
   </div>
   , document.getElementById('content')
 );

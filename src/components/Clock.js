@@ -4,6 +4,7 @@ import React from 'react';
 import moment from 'moment-timezone';
 import './Clock-locales';
 
+/** Clock component */
 export default React.createClass({
 
   propTypes: {
