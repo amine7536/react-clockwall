@@ -15,6 +15,7 @@
     "templates": {
             "cleverLinks": false,
             "monospaceLinks": false,
+            "includeDate": false,
             "default": {
                 "outputSourceFiles": true
             },
