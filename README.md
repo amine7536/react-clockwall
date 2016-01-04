@@ -167,18 +167,18 @@ __Defaults values__ :
 
 
 # CHANGELOG
-1.0.0 : Initial start
-1.0.0 : Project structure
-1.1.0 : Clock components
-1.1.1 : Using moment.js
-1.1.1 : Unit Test
-1.1.2 : Upgrade to React 0.14.3
-1.1.2 : Upgrade Test Utils and React 0.14.5
-1.1.3 : Adding more Tests
-1.2.0 : Adding locales i18e
-1.2.1 : Customize CSS
-1.2.2 : Switch to FlexBox
-1.3.0 : Toggle Town and Date display
-1.4.0 : Config prop declaration
-1.4.1 : Use moment-timezone
-1.4.2 : Use ES6 Class
+- 1.0.0 : Initial start
+- 1.0.0 : Project structure
+- 1.1.0 : Clock components
+- 1.1.1 : Using moment.js
+- 1.1.1 : Unit Test
+- 1.1.2 : Upgrade to React 0.14.3
+- 1.1.2 : Upgrade Test Utils and React 0.14.5
+- 1.1.3 : Adding more Tests
+- 1.2.0 : Adding locales i18e
+- 1.2.1 : Customize CSS
+- 1.2.2 : Switch to FlexBox
+- 1.3.0 : Toggle Town and Date display
+- 1.4.0 : Config prop declaration
+- 1.4.1 : Use moment-timezone
+- 1.4.2 : Use ES6 Class
