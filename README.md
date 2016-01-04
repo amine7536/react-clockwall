@@ -70,7 +70,22 @@ user@pixelfactory.io> npm run build
 ```
 
  This will create a new folder ```dist``` with the following files :
- 
+ ```
+ .
+├── index.html
+├── js
+│   ├── app.js
+│   └── app.js.map
+└── styles
+    ├── main.css
+    ├── main.css.map
+    ├── reset.css
+    ├── reset.css.map
+    ├── theme.css
+    └── theme.css.map
+
+2 directories, 9 files
+ ```
 
 ## Development Server
 We've made it easy to develop and test on your local machine. Once you've installed the dependencies and built your project, you can start a local server by running the command ```npm run watch```. This will start a local server and open up your browser.
