@@ -163,7 +163,33 @@ __Defaults values__ :
 
 
 ## Customize
+The Clock component will generate the following HTML for each clock you create :
 
+```html
+<div id="clock1" class="clock">
+  <h1 class="town">New York</h1>
+  <h2 class="timezone">America/New_York EST</h2>
+  <ul class="time">
+    <li class="hours">09</li>
+    <li class="points">:</li>
+    <li class="minutes">43</li>
+    <li class="seconds"><sup>57</sup></li>
+  </ul>
+  <h1 class="date">Monday 4 January 2016</h1>
+</div>
+```
+
+Each html element has its own CSS class, to customize the look of the Clock you can simply override the CSS classes in the ```styles/theme.css``` file.
+
+For example to set minutes color to red just add :
+
+```css
+#clock1 .minutes {
+	color: red;
+}
+```  
+
+Note that we are also using the Clock CSS `#id` to target only one Clock.
 
 
 # CHANGELOG

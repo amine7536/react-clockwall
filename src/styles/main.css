@@ -42,7 +42,7 @@ ul li {
 	color: #FFFFFF;
   text-align: left;
   padding: 15px;
-	min-width: 350px;
+	min-width: 354px;
 }
 
 .time {
@@ -96,29 +96,4 @@ ul li {
   0% {opacity:1.0;}
   50% {opacity:0;}
   100% {opacity:1.0;}
-}
-
-#clock1, #clock6 {
-	background: #05668D;
-	color: #B3D1DC;
-}
-
-#clock2, #clock7 {
-	background: #028090;
-	color: #B2D9DD;
-}
-
-#clock3, #clock8 {
-	background: #00A896;
-	color: #B2E5DF;
-}
-
-#clock4, #clock9 {
-	background: #02C39A;
-	color: #164B4C;
-}
-
-#clock5, #clock10 {
-	background: #F0F3BD;
-	color: #5F5A57;
 }

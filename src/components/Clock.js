@@ -29,6 +29,7 @@ import './Clock-locales';
 *
 * @extends React.Component
 * @requires moment-timezone
+* @requires Clock-locales
 */
 class Clock extends React.Component {
 
