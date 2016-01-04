@@ -9,6 +9,13 @@ Digital Clock made with React JS.
 - Unit tested
 - ES2015, Future-proof javascript
 
+## Browser Support :
+- Chrome
+- Safari
+- FireFox
+- IE Edge
+- IE9, IE10, IE11 (partial FlexBox support)
+
 ## Stack
 - __NodeJS__ : [https://nodejs.org](https://nodejs.org)
 - __BabelJS__ : [https://babeljs.io](https://babeljs.io)
