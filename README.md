@@ -41,9 +41,36 @@ CLI version 3.9.0
 ## Install dependencies
 Clockwall dependencies are managed with [NPM](https://www.npmjs.org/). The list of all dependencies can be found in the file ```package.json```.
 You can install the dependencies simply by running the following command:
+
 ```bash
 user@pixelfactory.io> npm install
 ```
+
+## Build application
+Once you have installed the dependencies using [NPM](https://www.npmjs.org/) you can build the project using the command :
+
+```
+user@pixelfactory.io> npm run build
+
+> clockwall@1.4.2 build /Dev/pixelfactory.io/clockwall
+> gulp build
+
+[16:47:27] Requiring external module babel-core/register
+[16:47:29] Using gulpfile /Dev/pixelfactory.io/clockwall/gulpfile.babel.js
+[16:47:29] Starting 'build'...
+[16:47:29] Starting 'clean'...
+[16:47:29] Finished 'clean' after 5.42 ms
+[16:47:29] Starting 'browserify'...
+[16:47:29] Finished 'browserify' after 36 ms
+[16:47:29] Starting 'styles'...
+[16:47:29] Finished 'styles' after 9.84 ms
+[16:47:29] Starting 'htmlReplace'...
+[16:47:29] Finished 'htmlReplace' after 3.13 ms
+[16:47:29] Finished 'build' after 60 ms
+```
+
+ This will create a new folder ```dist``` with the following files :
+ 
 
 ## Development Server
 We've made it easy to develop and test on your local machine. Once you've installed the dependencies and built your project, you can start a local server by running the command ```npm run watch```. This will start a local server and open up your browser.

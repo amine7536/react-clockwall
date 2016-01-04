@@ -1,8 +1,7 @@
 {
   "name": "clockwall",
   "version": "1.4.2",
-  "description": "",
-  "main": "app.js",
+  "description": "Digital Clocks made with ReactJS",
   "repository": {
     "type": "git",
     "url": "https://gitlab.spiir.me/pixelfactory/clockwall"
@@ -26,19 +25,14 @@
     "build": "gulp build",
     "build-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template --readme README.md"
   },
-  "author": "Amine Benseddik",
-  "license": "MIT",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "",
+  "author": "pixelfactory.io",
+  "license": "Envato REGULAR LICENSE",
   "dependencies": {
     "history": "^1.17.0",
     "moment": "^2.10.6",
     "moment-timezone": "^0.5.0",
     "react": "^0.14.5",
-    "react-dom": "^0.14.5",
-    "react-router": "^1.0.3"
+    "react-dom": "^0.14.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.3",
