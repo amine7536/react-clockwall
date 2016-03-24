@@ -114,9 +114,9 @@ class Clock extends React.Component {
       month: month,
       monthName: monthName,
       year: year,
-      hours:   ( hours < 10 ? "0" : "" ) + hours,
-      minutes: ( minutes < 10 ? "0" : "" ) + minutes,
-      seconds: ( seconds < 10 ? "0" : "" ) + seconds,
+      hours:   ( hours < 10 ? '0' : '' ) + hours,
+      minutes: ( minutes < 10 ? '0' : '' ) + minutes,
+      seconds: ( seconds < 10 ? '0' : '' ) + seconds,
       timezone: tz
     };
   }
