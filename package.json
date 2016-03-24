@@ -21,6 +21,8 @@
   ],
   "scripts": {
     "test": "mocha --reporter nyan --compilers js:babel-core/register --recursive",
+    "coverage": "babel-node ./node_modules/.bin/isparta cover --root src/ ./node_modules/.bin/_mocha -- --recursive",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "watch": "gulp watch",
     "build": "gulp build",
     "build-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template --readme README.md"
