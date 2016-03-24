@@ -1,4 +1,4 @@
-# Clockwall [![Build Status](https://travis-ci.org/amine7536/clockwall.svg?branch=master)](https://travis-ci.org/amine7536/clockwall)
+# Clockwall [![Build Status](https://img.shields.io/travis/amine7536/clockwall/master.svg?style=flat)](https://travis-ci.org/amine7536/clockwall) [![Coverage Status](https://img.shields.io/coveralls/amine7536/clockwall/master.svg?style=flat)](https://coveralls.io/github/amine7536/clockwall?branch=master)
 
 Digital Clock made with React JS.
 
