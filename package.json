@@ -28,7 +28,7 @@
     "build-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template --readme README.md"
   },
   "author": "pixelfactory.io",
-  "license": "Envato REGULAR LICENSE",
+  "license": "MIT",
   "dependencies": {
     "history": "^2.0.1",
     "moment": "^2.10.6",
