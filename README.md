@@ -25,7 +25,7 @@ Digital Clock made with React JS.
 A Demo of the Clock component is availabe in folder `demo`.
 Open ```demo/index.html``` in your Browser.
 
-![Clockwall-Demo](img/clockwall-demo.png)
+![Clockwall-Demo](https://raw.githubusercontent.com/amine7536/clockwall/master/docs/js/img/clockwall-demo.png)
 
 # Build
 **Please note that any commands we tell you to run must be ran from the project's root folder.**
