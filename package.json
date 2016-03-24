@@ -4,7 +4,7 @@
   "description": "Digital Clocks made with ReactJS",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.spiir.me/pixelfactory/clockwall"
+    "url": "https://github.com/amine7536/clockwall"
   },
   "keywords": [
     "gulp",
