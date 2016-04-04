@@ -25,8 +25,10 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "watch": "gulp watch",
     "build": "gulp build",
-    "build-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template --readme README.md"
+    "build-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template --readme README.md",
+    "build-lib": "babel --out-dir lib/ src/components/"
   },
+  "main": "lib/Clock.js",
   "author": "pixelfactory.io",
   "license": "MIT",
   "dependencies": {
