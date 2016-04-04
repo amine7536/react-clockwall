@@ -1,4 +1,4 @@
-# Clockwall [![Build Status](https://img.shields.io/travis/amine7536/react-clockwall/master.svg?style=flat)](https://travis-ci.org/amine7536/react-clockwall) [![Coverage Status](https://img.shields.io/coveralls/amine7536/react-clockwall/master.svg?style=flat)](https://coveralls.io/github/amine7536/react-clockwall?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5702884dfcd19a00415b002b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5702884dfcd19a00415b002b)
+# Clockwall [![Build Status](https://img.shields.io/travis/amine7536/react-clockwall/master.svg?style=flat-square)](https://travis-ci.org/amine7536/react-clockwall) [![Coverage Status](https://img.shields.io/coveralls/amine7536/react-clockwall/master.svg?style=flat-square)](https://coveralls.io/github/amine7536/react-clockwall?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5702884dfcd19a00415b002b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5702884dfcd19a00415b002b)
 
 Digital Clock made with React JS.
 
