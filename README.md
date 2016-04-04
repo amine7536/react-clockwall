@@ -1,4 +1,4 @@
-# Clockwall [![Build Status](https://img.shields.io/travis/amine7536/clockwall/master.svg?style=flat)](https://travis-ci.org/amine7536/clockwall) [![Coverage Status](https://img.shields.io/coveralls/amine7536/clockwall/master.svg?style=flat)](https://coveralls.io/github/amine7536/clockwall?branch=master)
+# Clockwall [![Build Status](https://img.shields.io/travis/amine7536/react-clockwall/master.svg?style=flat)](https://travis-ci.org/amine7536/react-clockwall) [![Coverage Status](https://img.shields.io/coveralls/amine7536/react-clockwall/master.svg?style=flat)](https://coveralls.io/github/amine7536/react-clockwall?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5702884dfcd19a00415b002b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5702884dfcd19a00415b002b)
 
 Digital Clock made with React JS.
 
@@ -22,8 +22,8 @@ Digital Clock made with React JS.
 - __ReactJS__ : [https://facebook.github.io/react/](https://facebook.github.io/react/)
 
 ## Preview
-A Demo of the Clock component is availabe in folder `demo`.
-Open ```demo/index.html``` in your Browser.
+A Demo of the Clock component is available in folder `demo`.
+Open ```demo/index.html``` in your Browser. Or here : [https://pixelfactory.io/projects/clockwall/](https://pixelfactory.io/projects/clockwall/)
 
 ![Clockwall-Demo](https://raw.githubusercontent.com/amine7536/clockwall/master/docs/js/img/clockwall-demo.png)
 
