@@ -27,9 +27,9 @@ describe('Clock: ', () => {
   // Year
   let year = now.get('year');
   // Time
-  let h = ( now.get('hour') < 10 ? "0" : "" ) + now.get('hour');
-  let m = ( now.get('minute') < 10 ? "0" : "" ) + now.get('minute');
-  let s = ( now.get('second') < 10 ? "0" : "" ) + now.get('second');
+  let h = ( now.get('hour') < 10 ? '0' : '' ) + now.get('hour');
+  let m = ( now.get('minute') < 10 ? '0' : '' ) + now.get('minute');
+  let s = ( now.get('second') < 10 ? '0' : '' ) + now.get('second');
 
   // Test Clock Element
   it('should be a <div> container', () => {
@@ -65,7 +65,7 @@ describe('Clock: ', () => {
     expect(timezone.props.className).to.eql('timezone');
   });
   it(`timezone should contain the text "${config.timezone} ${tz.toString()}`, () => {
-    expect(timezone.props.children.join('')).to.eql('Europe/Paris CET');
+    expect(timezone.props.children.join('')).to.eql('Europe/Paris CEST');
   });
 
   // Test Time Element
