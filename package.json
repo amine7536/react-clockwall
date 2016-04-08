@@ -1,6 +1,6 @@
 {
   "name": "react-clockwall",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Digital Clocks made with ReactJS",
   "repository": {
     "type": "git",
@@ -35,8 +35,8 @@
   "dependencies": {
     "moment": "^2.10.6",
     "moment-timezone": "^0.5.0",
-    "react": "^0.14.5",
-    "react-dom": "^0.14.5"
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.3",
@@ -71,7 +71,7 @@
     "postcss-nested": "^1.0.0",
     "postcss-simple-extend": "^1.0.0",
     "postcss-simple-vars": "^1.2.0",
-    "react-addons-test-utils": "^0.14.5",
+    "react-addons-test-utils": "^15.0.1",
     "rimraf": "^2.5.0",
     "run-sequence": "^1.1.2",
     "vinyl-buffer": "^1.0.0",
