@@ -1,28 +1,18 @@
 {
   "parser": "babel-eslint",
-  "plugins": [
-    "react"
-  ],
-  "ecmaFeatures": {
-    "modules": true,
-    "jsx": true
-  },
+  "extends": "airbnb",
   "env": {
     "browser": true,
-    "es6": true,
-    "node": true,
-    "mocha": true
+    "mocha": true,
+    "node": true
   },
   "rules": {
-    "quotes": [
-      2,
-      "single"
-    ],
-    "eqeqeq": [
-      2,
-      "smart"
-    ],
-    "keyword-spacing": 2,
-    "no-console": 1
-  }
+    "react/jsx-no-bind": 0,
+    "comma-dangle": 0,
+    "no-use-before-define": 0,
+    "consistent-return": 0
+  },
+  "plugins": [
+    "react"
+  ]
 }

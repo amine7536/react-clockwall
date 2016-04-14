@@ -56,7 +56,7 @@ gulp.task('browserSync', () => {
 */
 
 gulp.task('watchify', () => {
-  let bundler = watchify(browserify(paths.srcJsx, watchify.args));
+  const bundler = watchify(browserify(paths.srcJsx, watchify.args));
 
   function rebundle() {
     return bundler
@@ -64,7 +64,7 @@ gulp.task('watchify', () => {
       .on('error', notify.onError())
       .pipe(source(paths.bundle))
       .pipe(gulp.dest(paths.distJs))
-      .pipe(reload({stream: true}));
+      .pipe(reload({ stream: true }));
   }
 
   bundler.transform(babelify)
@@ -103,7 +103,7 @@ gulp.task('styles', () => {
   .pipe(postcss([vars, extend, nested, autoprefixer, cssnano]))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(paths.dist))
-  .pipe(reload({stream: true}));
+  .pipe(reload({ stream: true }));
 });
 
 /* https://www.npmjs.com/package/gulp-html-replace
@@ -114,7 +114,7 @@ gulp.task('styles', () => {
 gulp.task('htmlReplace', () => {
   gulp.src('index.html')
   .pipe(htmlReplace({
-    css: ['styles/reset.css','styles/main.css','styles/theme.css'],
+    css: ['styles/reset.css', 'styles/main.css', 'styles/theme.css'],
     js: 'js/app.js'
   }))
   .pipe(gulp.dest(paths.dist));

@@ -1,11 +1,9 @@
-'use strict';
 /**
  * @fileOverview Clock Component
  * @author amine.benseddik@pixelfactory.io
  * @module Components
  */
-
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import moment from 'moment-timezone';
 import './Clock-locales';
 
@@ -31,8 +29,7 @@ import './Clock-locales';
 * @requires moment-timezone
 * @requires Clock-locales
 */
-class Clock extends React.Component {
-
+class Clock extends Component {
   /**
   * @description
   * #### constructor(props)
@@ -55,7 +52,19 @@ class Clock extends React.Component {
     /* Set Initlal State */
     this.state = {
       currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale)
-    }
+    };
+  }
+
+  /**
+  * React Component Method : [https://facebook.github.io/react/docs/component-specs.html](https://facebook.github.io/react/docs/component-specs.html)
+  * Calls `getMoment()` every seconds and stores `currentDate` in component `this.state`.
+  */
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale)
+      });
+    }, 1000);
   }
 
   /**
@@ -86,73 +95,71 @@ class Clock extends React.Component {
   */
   getMoment(timezone, locale) {
     moment.locale(locale);
-    let now = moment().tz(timezone);
-    let tz = moment().tz(timezone).format('z');
+    const now = moment().tz(timezone);
+    const tz = moment().tz(timezone).format('z');
 
     // Day
-    let weekdays = moment.weekdays();
-    let dayName = weekdays[now.get('day')];
-    let day = now.get('date');
+    const weekdays = moment.weekdays();
+    const dayName = weekdays[now.get('day')];
+    const day = now.get('date');
 
     // Month
-    let months = moment.months();
-    let monthName = months[now.month()];
-    let month = now.get('month');
+    const months = moment.months();
+    const monthName = months[now.month()];
+    const month = now.get('month');
 
     // Year
-    let year = now.get('year');
+    const year = now.get('year');
 
     // Time
-    let hours = now.get('hour');
-    let minutes = now.get('minute');
-    let seconds = now.get('second');
+    const hours = now.get('hour');
+    const minutes = now.get('minute');
+    const seconds = now.get('second');
 
     // return time object
     return {
-      day: day,
-      dayName: dayName,
-      month: month,
-      monthName: monthName,
-      year: year,
-      hours:   ( hours < 10 ? '0' : '' ) + hours,
-      minutes: ( minutes < 10 ? '0' : '' ) + minutes,
-      seconds: ( seconds < 10 ? '0' : '' ) + seconds,
+      day,
+      dayName,
+      month,
+      monthName,
+      year,
+      hours: (hours < 10 ? '0' : '') + hours,
+      minutes: (minutes < 10 ? '0' : '') + minutes,
+      seconds: (seconds < 10 ? '0' : '') + seconds,
       timezone: tz
     };
-  }
-
-  /**
-  * React Component Method : [https://facebook.github.io/react/docs/component-specs.html](https://facebook.github.io/react/docs/component-specs.html)
-  * Calls ```getMoment()``` every seconds and stores ```currentDate``` in component ```this.state```.
-  */
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({ currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale) })
-    }, 1000)
   }
 
   /**
   * Renders the Clock
   */
   render() {
-    var config = this.props.config;
-
+    const { config } = this.props;
+    const { timezone,
+            hours,
+            minutes,
+            seconds,
+            dayName,
+            day,
+            monthName,
+            year,
+          } = this.state.currentDate;
     return (
       <div id={config.id} className="clock">
       {config.showTown ?
         <h1 className="town">{config.town}</h1> :
       null}
       {config.showTimezone ?
-        <h2 className="timezone">{config.timezone} {this.state.currentDate.timezone}</h2>:
+        <h2 className="timezone">{config.timezone} {timezone}</h2> :
       null}
         <ul className="time">
-          <li className="hours">{this.state.currentDate.hours}</li>
+          <li className="hours">{hours}</li>
           <li className="points">:</li>
-          <li className="minutes">{this.state.currentDate.minutes}</li>
-          <li className="seconds"><sup>{this.state.currentDate.seconds}</sup></li>
+          <li className="minutes">{minutes}</li>
+          <li className="seconds"><sup>{seconds}</sup></li>
         </ul>
       {config.showDate ?
-        <h1 className="date">{this.state.currentDate.dayName} {this.state.currentDate.day} {this.state.currentDate.monthName} {this.state.currentDate.year}</h1> :
+        <h1 className="date">{dayName} {day} {monthName} {year}</h1> :
       null}
       </div>
     );
@@ -183,10 +190,15 @@ class Clock extends React.Component {
 */
 Clock.propTypes = {
   /* Required */
-  config: React.PropTypes.shape({
-    town: React.PropTypes.string.isRequired,
-    timezone: React.PropTypes.string.isRequired
+  config: PropTypes.shape({
+    town: PropTypes.string.isRequired,
+    timezone: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    locale: PropTypes.string,
+    showTown: PropTypes.bool,
+    showTimezone: PropTypes.bool,
+    showDate: PropTypes.bool,
   })
-}
+};
 
 export default Clock;
