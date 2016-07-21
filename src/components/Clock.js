@@ -60,11 +60,23 @@ class Clock extends Component {
   * Calls `getMoment()` every seconds and stores `currentDate` in component `this.state`.
   */
   componentDidMount() {
-    setInterval(() => {
+    const tic = setInterval(() => {
       this.setState({
         currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale)
       });
     }, 1000);
+
+    /* Save interval to state otherwise it will not survive render cycle */
+    this.setState({ tic });
+  }
+
+  /**
+   * React Component Method : [https://facebook.github.io/react/docs/component-specs.html](https://facebook.github.io/react/docs/component-specs.html)
+   * Clear Interval when component is unmounted
+   * github issue #1 : https://github.com/amine7536/react-clockwall/issues/1
+   */
+  componentWillUnmount() {
+    clearInterval(this.state.tic);
   }
 
   /**
