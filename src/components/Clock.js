@@ -103,7 +103,7 @@ class Clock extends Component {
   *   seconds: ( seconds < 10 ? "0" : "" ) + seconds,
   *   timezone: tz
   * }
-  ```
+  *```
   */
   getMoment(timezone, locale) {
     moment.locale(locale);
@@ -147,15 +147,17 @@ class Clock extends Component {
   */
   render() {
     const { config } = this.props;
-    const { timezone,
-            hours,
-            minutes,
-            seconds,
-            dayName,
-            day,
-            monthName,
-            year,
-          } = this.state.currentDate;
+    const {
+      timezone,
+      hours,
+      minutes,
+      seconds,
+      dayName,
+      day,
+      monthName,
+      year,
+    } = this.state.currentDate;
+
     return (
       <div id={config.id} className="clock">
       {config.showTown ?
