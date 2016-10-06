@@ -21,8 +21,8 @@
     "chai"
   ],
   "scripts": {
-    "test": "mocha --reporter nyan --compilers js:babel-core/register --recursive",
-    "coverage": "babel-node ./node_modules/.bin/isparta cover --root src/ ./node_modules/.bin/_mocha -- --recursive",
+    "test": "mocha --compilers js:babel-core/register --recursive",
+    "coverage": "babel-node ./node_modules/.bin/babel-istanbul cover --root src/ ./node_modules/.bin/_mocha -- --recursive",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "watch": "gulp watch",
     "build": "gulp build",
@@ -33,6 +33,7 @@
   "author": "pixelfactory.io",
   "license": "MIT",
   "dependencies": {
+    "babel-istanbul": "^0.11.0",
     "moment": "^2.10.6",
     "moment-timezone": "^0.5.0",
     "react": "^15.0.1",
@@ -67,8 +68,6 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^2.0.0",
     "ink-docstrap": "^1.1.0",
-    "isparta": "^4.0.0",
-    "istanbul": "^0.4.2",
     "jsdoc": "^3.4.0",
     "mocha": "^3.1.0",
     "postcss-nested": "^1.0.0",
