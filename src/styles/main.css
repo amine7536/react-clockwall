@@ -1,16 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900&subset=latin,latin-ext,greek,cyrillic,greek-ext,vietnamese,cyrillic-ext);
-
 body {
-	 background: #000;
-   color: #bbbbbb;
+  background: #000;
+  color: #bbbbbb;
 }
 
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 ul li {
-	display: inline;
+  display: inline;
 }
 
 .flex-container {
@@ -30,19 +29,19 @@ ul li {
   align-content: flex-end;
 }
 
-.clockwall{
- /* PlaceHolder */
+.clockwall {
+  /* PlaceHolder */
 }
 
 .clock {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 12px;
-	/*border: 1px solid #333333;*/
-	color: #FFFFFF;
+  /*border: 1px solid #333333;*/
+  color: #FFFFFF;
   text-align: left;
   padding: 15px;
-	min-width: 354px;
+  min-width: 354px;
 }
 
 .time {
@@ -53,47 +52,75 @@ ul li {
   padding-right: 5px;
 }
 
-.seconds {
-  font-size: 0.7em;
+.sectional {
+  display: inline-block;
+  vertical-align: top;
 }
 
-.seconds sup {
+.seconds {
+  font-size: 0.7em;
   vertical-align: super;
+  float: right;
+}
+
+.meridiem {
+  font-size: 0.2em;
+  padding-right: 4px;
+  float: right;
+  clear: right;
 }
 
 .date {
-	font-size: 2em;
+  font-size: 2em;
 }
 
 .town {
   font-size: 2em;
-	margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .timezone {
-	font-weight: lighter;
+  font-weight: lighter;
 }
 
 .points {
-	position: relative;
-	-moz-animation: blink 1s ease infinite;
-	-webkit-animation: blink 1s ease infinite;
+  position: relative;
+  -moz-animation: blink 1s ease infinite;
+  -webkit-animation: blink 1s ease infinite;
 }
 
 @-webkit-keyframes blink {
-	0% {opacity:1.0;}
-	50% {opacity:0;}
-	100% {opacity:1.0;}
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1.0;
+  }
 }
 
 @-moz-keyframes blink {
-  0% {opacity:1.0;}
-  50% {opacity:0;}
-  100% {opacity:1.0;}
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1.0;
+  }
 }
 
 @keyframes blink {
-  0% {opacity:1.0;}
-  50% {opacity:0;}
-  100% {opacity:1.0;}
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1.0;
+  }
 }

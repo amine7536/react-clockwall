@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactTestUtils from 'react-addons-test-utils';
-import { expect } from 'chai';
+import {expect} from 'chai';
 import Clock from '../../src/components/Clock';
 import moment from 'moment-timezone';
 
-
 describe('Clock: ', () => {
-  var config={ town: 'Paris', timezone: 'Europe/Paris', locale: 'fr', showTown: true, showTimezone: true, showDate: true };
+  const config = {
+    town: 'Paris',
+    timezone: 'Europe/Paris',
+    locale: 'fr',
+    showTown: true,
+    showTimezone: true,
+    showDate: true,
+    meridiem: true
+  };
 
   const shallowRenderer = ReactTestUtils.createRenderer();
-  shallowRenderer.render(<Clock config={{ town: 'Paris', timezone: 'Europe/Paris', locale: 'fr', showTown: true, showTimezone: true, showDate: true }}/>);
+  shallowRenderer.render(<Clock config={config}/>);
   const clock = shallowRenderer.getRenderOutput();
 
   // Should call Component Method instead, to be changed in next version
@@ -27,9 +34,21 @@ describe('Clock: ', () => {
   // Year
   let year = now.get('year');
   // Time
-  let h = ( now.get('hour') < 10 ? '0' : '' ) + now.get('hour');
-  let m = ( now.get('minute') < 10 ? '0' : '' ) + now.get('minute');
-  let s = ( now.get('second') < 10 ? '0' : '' ) + now.get('second');
+  let h = now.get('hour');
+  let me = (h < 12)
+    ? 'AM'
+    : 'PM';
+  h = (config.meridiem && me === 'PM')
+    ? ((h - 12) < 10
+      ? '0'
+      : '') + (h - 12)
+    : h;
+  let m = (now.get('minute') < 10
+    ? '0'
+    : '') + now.get('minute');
+  let s = (now.get('second') < 10
+    ? '0'
+    : '') + now.get('second');
 
   // Test Clock Element
   it('should be a <div> container', () => {
@@ -65,7 +84,7 @@ describe('Clock: ', () => {
     expect(timezone.props.className).to.eql('timezone');
   });
   it(`timezone should contain the text "${config.timezone} ${tz.toString()}`, () => {
-    expect(timezone.props.children.join('')).to.eql('Europe/Paris CEST');
+    expect(timezone.props.children.join('')).to.eql('Europe/Paris CET');
   });
 
   // Test Time Element
@@ -110,17 +129,39 @@ describe('Clock: ', () => {
     expect(minutes.props.children).to.eql(m.toString());
   })
 
+  // Test Sectional Element
+  const sectional = time.props.children[3];
+  it('sectional should be a <li> tag', () => {
+    expect(sectional.type).to.eql('li');
+  });
+  it('sectional should have className "sectional"', () => {
+    expect(sectional.props.className).to.eql('sectional');
+  });
+
   // Test Seconds Element
-  const seconds = time.props.children[3];
-  it('seconds should be a <li> tag', () => {
-    expect(seconds.type).to.eql('li');
+  const seconds = sectional.props.children[0];
+  it('seconds should be a <sup> tag', () => {
+    expect(seconds.type).to.eql('sup');
   });
   it('seconds should have className "seconds"', () => {
     expect(seconds.props.className).to.eql('seconds');
   });
-  // Warning : could fail if test last longuer than 1sec
+  // Warning : could fail if test last longer than 1sec
   it(`seconds should equal "${s.toString()}"`, () => {
-    expect(seconds.props.children.props.children).to.eql(s.toString());
+    expect(seconds.props.children).to.eql(s.toString());
+  });
+
+  // Test Meridiem Element
+  const meridiem = sectional.props.children[1];
+  it('meridiem should be a <sub> tag', () => {
+    expect(meridiem.type).to.eql('sub');
+  });
+  it('meridiem should have className "meridiem"', () => {
+    expect(meridiem.props.className).to.eql('meridiem');
+  });
+  // Warning : could fail if test last longer than 1sec
+  it(`meridiem should equal "${me}"`, () => {
+    expect(meridiem.props.children).to.eql(`${me}`);
   });
 
   // Test Date Element

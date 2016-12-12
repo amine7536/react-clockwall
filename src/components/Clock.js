@@ -24,6 +24,7 @@ import './Clock-locales';
 * - **config.showTown** : Include TOWN name in rendered html (default: ```true```)
 * - **config.showTimezone** : Include TIMEZONE name in rendered html (default: ```true```)
 * - **config.showDate** : Include DATE in rendered html (default: ```true```)
+* - **config.meridiem** : Use 12 hour clock (default: ```false```)
 *
 * @extends React.Component
 * @requires moment-timezone
@@ -48,6 +49,7 @@ class Clock extends Component {
     this.props.config.showTown = this.props.config.showTown || true;
     this.props.config.showTimezone = this.props.config.showTimezone || true;
     this.props.config.showDate = this.props.config.showDate || true;
+    this.props.config.meridiem = this.props.config.meridiem || false;
 
     /* Set Initlal State */
     this.state = {
@@ -101,6 +103,7 @@ class Clock extends Component {
   *   hours:   ( hours < 10 ? "0" : "" ) + hours,
   *   minutes: ( minutes < 10 ? "0" : "" ) + minutes,
   *   seconds: ( seconds < 10 ? "0" : "" ) + seconds,
+  *   meridiem: meridiem,
   *   timezone: tz
   * }
   *```
@@ -124,7 +127,9 @@ class Clock extends Component {
     const year = now.get('year');
 
     // Time
-    const hours = now.get('hour');
+    let hours = now.get('hour');
+    const meridiem = (hours < 12) ? 'AM' : 'PM';
+    hours = (this.props.config.meridiem && meridiem === 'PM') ? (hours - 12) : hours;
     const minutes = now.get('minute');
     const seconds = now.get('second');
 
@@ -138,6 +143,7 @@ class Clock extends Component {
       hours: (hours < 10 ? '0' : '') + hours,
       minutes: (minutes < 10 ? '0' : '') + minutes,
       seconds: (seconds < 10 ? '0' : '') + seconds,
+      meridiem,
       timezone: tz
     };
   }
@@ -152,6 +158,7 @@ class Clock extends Component {
       hours,
       minutes,
       seconds,
+      meridiem,
       dayName,
       day,
       monthName,
@@ -170,7 +177,12 @@ class Clock extends Component {
           <li className="hours">{hours}</li>
           <li className="points">:</li>
           <li className="minutes">{minutes}</li>
-          <li className="seconds"><sup>{seconds}</sup></li>
+          <li className="sectional">
+              <sup className="seconds">{seconds}</sup>
+              {config.meridiem ?
+                <sub className="meridiem">{meridiem}</sub> :
+              null}
+          </li>
         </ul>
       {config.showDate ?
         <h1 className="date">{dayName} {day} {monthName} {year}</h1> :
@@ -191,6 +203,7 @@ class Clock extends Component {
 * - **config.showTown** : Bool
 * - **config.showTimezone** : Bool
 * - **config.showDate** : Bool
+* - **config.meridiem** : Bool
 *
 * Example :
 * ```json
@@ -212,6 +225,7 @@ Clock.propTypes = {
     showTown: PropTypes.bool,
     showTimezone: PropTypes.bool,
     showDate: PropTypes.bool,
+    meridiem: PropTypes.bool,
   })
 };
 
