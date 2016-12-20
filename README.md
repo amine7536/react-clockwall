@@ -257,3 +257,4 @@ Note that we are also using the Clock CSS `#id` to target only one Clock.
 - 1.4.0 : Config prop declaration
 - 1.4.1 : Use moment-timezone
 - 1.4.2 : Use ES6 Class
+- 1.4.7 : Adding meridiem (FallingSnow Github PR: https://github.com/amine7536/react-clockwall/pull/2)
