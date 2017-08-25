@@ -1,8 +1,9 @@
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
-import {expect} from 'chai';
-import Clock from '../../src/components/Clock';
 import moment from 'moment-timezone';
+import ReactTestUtils from 'react-dom/test-utils';
+import { expect } from 'chai';
+
+import Clock from '../../src/components/Clock';
 
 describe('Clock: ', () => {
   const config = {
@@ -21,34 +22,27 @@ describe('Clock: ', () => {
 
   // Should call Component Method instead, to be changed in next version
   moment.locale(config.locale);
-  let now = moment().tz(config.timezone);
-  let tz = moment().tz(config.timezone).format('z');
+  const now = moment().tz(config.timezone);
+  const tz = moment().tz(config.timezone).format('z');
+
   // Day
-  let weekdays = moment.weekdays();
-  let dayName = weekdays[now.get('day')];
-  let day = now.get('date');
+  const weekdays = moment.weekdays();
+  const dayName = weekdays[now.get('day')];
+  const day = now.get('date');
+
   // Month
-  let months = moment.months();
-  let monthName = months[now.month()];
-  let month = now.get('month');
+  const months = moment.months();
+  const monthName = months[now.month()];
+
   // Year
-  let year = now.get('year');
+  const year = now.get('year');
+
   // Time
   let h = now.get('hour');
-  let me = (h < 12)
-    ? 'AM'
-    : 'PM';
-  h = (config.meridiem && me === 'PM')
-    ? ((h - 12) < 10
-      ? '0'
-      : '') + (h - 12)
-    : h;
-  let m = (now.get('minute') < 10
-    ? '0'
-    : '') + now.get('minute');
-  let s = (now.get('second') < 10
-    ? '0'
-    : '') + now.get('second');
+  const me = (h < 12) ? 'AM' : 'PM';
+  h = (config.meridiem && me === 'PM') ? ((h - 12) < 10 ? '0' : '') + (h - 12) : h;
+  const m = (now.get('minute') < 10 ? '0' : '') + now.get('minute');
+  const s = (now.get('second') < 10 ? '0' : '') + now.get('second');
 
   // Test Clock Element
   it('should be a <div> container', () => {
@@ -84,7 +78,7 @@ describe('Clock: ', () => {
     expect(timezone.props.className).to.eql('timezone');
   });
   it(`timezone should contain the text "${config.timezone} ${tz.toString()}`, () => {
-    expect(timezone.props.children.join('')).to.eql('Europe/Paris CET');
+    expect(timezone.props.children.join('')).to.eql('Europe/Paris CEST');
   });
 
   // Test Time Element
@@ -175,5 +169,5 @@ describe('Clock: ', () => {
   it(`date should equal "${dayName} ${day} ${monthName} ${year}"`, () => {
     expect(date.props.children.join('')).to.eql(`${dayName} ${day} ${monthName} ${year}`);
   });
-
 });
+
