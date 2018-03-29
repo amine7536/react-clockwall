@@ -55,10 +55,10 @@ describe('Clock: ', () => {
   // console.log(clock.props.children[0]);
   // console.log(clock.props.children[1]);
   // console.log(clock.props.children[2]);
-  // console.log(clock.props.children[2]);
+  // console.log(clock.props.children[3]);
 
   // Test Town Element
-  const town = clock.props.children[0]
+  const town = clock.props.children[0];
   it('town should be a <h1> tag', () => {
     expect(town.type).to.eql('h1');
   });
@@ -70,7 +70,7 @@ describe('Clock: ', () => {
   });
 
   // Test Timezone Element
-  const timezone = clock.props.children[1]
+  const timezone = clock.props.children[1];
   it('timezone should be a <h2> tag', () => {
     expect(timezone.type).to.eql('h2');
   });
@@ -100,7 +100,7 @@ describe('Clock: ', () => {
   });
   it(`hours should equal "${h.toString()}"`, () => {
     expect(hours.props.children).to.eql(h.toString());
-  })
+  });
 
   // Test Points Element
   const points = time.props.children[1];
@@ -121,7 +121,7 @@ describe('Clock: ', () => {
   });
   it(`minutes should equal "${m.toString()}"`, () => {
     expect(minutes.props.children).to.eql(m.toString());
-  })
+  });
 
   // Test Sectional Element
   const sectional = time.props.children[3];

@@ -44,12 +44,12 @@ class Clock extends Component {
     super(props);
 
     /* Set Default Props Values */
-    this.props.config.id = this.props.config.id || `pixelfactory-${this.props.config.town}`;
-    this.props.config.locale = this.props.config.locale || 'en';
-    this.props.config.showTown = this.props.config.showTown || true;
-    this.props.config.showTimezone = this.props.config.showTimezone || true;
-    this.props.config.showDate = this.props.config.showDate || true;
-    this.props.config.meridiem = this.props.config.meridiem || false;
+    if (this.props.config.id === undefined) { this.props.config.id = `pixelfactory-${this.props.config.town}` }
+    if (this.props.config.locale === undefined) { this.props.config.locale = 'en' }
+    if (this.props.config.showTown === undefined) { this.props.config.showTown = true }
+    if (this.props.config.showTimezone === undefined) { this.props.config.showTimezone = true }
+    if (this.props.config.showDate === undefined) { this.props.config.showDate = true }
+    if (this.props.config.meridiem === undefined) { this.props.config.meridiem = false }
 
     /* Set Initlal State */
     this.state = {
