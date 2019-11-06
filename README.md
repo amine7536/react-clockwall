@@ -3,13 +3,15 @@
 Digital Clock made with React JS.
 
 ## Features
+
 - Customizable with CSS
 - Built-in Internationalization (i18n)
 - Light, Create as many clocks as you want
 - Unit tested
 - ES2015, Future-proof javascript
 
-## Browser Support :
+## Browser Support
+
 - Chrome
 - Safari
 - FireFox
@@ -17,35 +19,42 @@ Digital Clock made with React JS.
 - IE9, IE10, IE11 (partial FlexBox support)
 
 ## Stack
+
 - __NodeJS__ : [https://nodejs.org](https://nodejs.org)
 - __BabelJS__ : [https://babeljs.io](https://babeljs.io)
 - __ReactJS__ : [https://facebook.github.io/react/](https://facebook.github.io/react/)
 
 ## Preview
+
 A Demo of the Clock component is available in folder `demo`.
 Open ```demo/index.html``` in your Browser. Or here : [https://pixelfactory.io/projects/clockwall/](https://pixelfactory.io/projects/clockwall/)
 
 ![Clockwall-Demo](https://raw.githubusercontent.com/amine7536/clockwall/master/docs/js/img/clockwall-demo.png)
 
-# Build
+## Build
+
 **Please note that any commands we tell you to run must be ran from the project's root folder.**
 
 ## Gulp task runner
+
 [Gulp](http://gulpjs.com) is an Task / Build runner. This project relies on Gulp for automation of tasks.  
 In order to use [Gulp](http://gulpjs.com) you will need to have [Node.js](https://nodejs.org) installed on your computer. Also insure that you have [NPM](https://www.npmjs.org/) installed. You can check if these are installed properly by opening up a Terminal (Linux or Mac) or Command Prompt (Windows) and entering the command: ```node --version``` and ```npm --version```. These commands should output something similar to "v5.1.1" and "3.3.12" respectively.
 
 Once you have installed these programs, you'll need to get **gulp**. You can achieve this by running the following command:
+
 ```bash
 user@pixelfactory.io> npm install -g gulp
 ```
 
 Now you should be able to exectue the command **gulp** :
+
 ```bash
 user@pixelfactory.io> gulp --version
 CLI version 3.9.0
 ```
 
 ## Install dependencies
+
 Clockwall dependencies are managed with [NPM](https://www.npmjs.org/). The list of all dependencies can be found in the file ```package.json```.
 You can install the dependencies simply by running the following command:
 
@@ -54,9 +63,10 @@ user@pixelfactory.io> npm install
 ```
 
 ## Build application
+
 Once you have installed the dependencies using [NPM](https://www.npmjs.org/) you can build the project using the command :
 
-```
+```bash
 user@pixelfactory.io> npm run build
 
 > clockwall@1.4.2 build /Dev/pixelfactory.io/clockwall
@@ -76,8 +86,9 @@ user@pixelfactory.io> npm run build
 [16:47:29] Finished 'build' after 60 ms
 ```
 
- This will create a new folder ```dist``` with the following files :
- ```
+This will create a new folder ```dist``` with the following files :
+
+ ```bash
  .
 ├── index.html
 ├── js
@@ -95,9 +106,10 @@ user@pixelfactory.io> npm run build
  ```
 
 ## Development Server
+
 We've made it easy to develop and test on your local machine. Once you've installed the dependencies and built your project, you can start a local server by running the command ```npm run watch```. This will start a local server and open up your browser.
 
-```
+```bash
 user@pixelfactory.io> npm run watch
 
 > clockwall@1.4.1 watch /Dev/pixelfactory.io/clockwall
@@ -132,12 +144,13 @@ UI External: http://172.16.1.174:3001
 [23:10:26] Finished 'watch' after 5.58 s
 ```
 
-The Development environment uses [browserSync](https://www.browsersync.io) to enable **LiveReload**. Your browser will be automatically as you change HTML, CSS and Javascript files or other files under ```src``` folder.    
+The Development environment uses [browserSync](https://www.browsersync.io) to enable **LiveReload**. Your browser will be automatically as you change HTML, CSS and Javascript files or other files under ```src``` folder.
 
 ## Running test
+
 The project test can be found in the folder ```test/components```. You can run the tests by running the command: ```npm test```
 
-```
+```bash
 user@pixelfactory.io> npm test
 
 > clockwall@1.4.2 test /Dev/pixelfactory.io/clockwall
@@ -151,9 +164,10 @@ user@pixelfactory.io> npm test
   24 passing (78ms)
 ```
 
-# Getting started
+## Getting started
 
-## Basic Usage
+### Basic Usage
+
 Simply ```import Clock from './components/Clock';``` and start using the **<Clock/>** component.
 
 ```javascript
@@ -165,8 +179,10 @@ ReactDOM.render(
 );
 ```
 
-## Advanced Usage
+### Advanced Usage
+
 __Usage__ :
+
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -197,21 +213,24 @@ ReactDOM.render(
 );
 
 ```
+
 __Required params__ :
- - config.timezone : [ISO Timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
- - config.town : Town name to display
+
+- config.timezone : [ISO Timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+- config.town : Town name to display
 
 __Defaults values__ :
- - config.id : CSS ```#id``` (default: ```pixelfactory-town```)
- - config.locale : ISO language code (default: ```en```)
- - config.showTown : Include TOWN name in rendered html (default: ```true```)
- - config.showTimezone : Include TIMEZONE name in rendered html (default: ```true```)
- - config.showDate : Include DATE in rendered html (default: ```true```)
+
+- config.id : CSS ```#id``` (default: ```pixelfactory-town```)
+- config.locale : ISO language code (default: ```en```)
+- config.showTown : Include TOWN name in rendered html (default: ```true```)
+- config.showTimezone : Include TIMEZONE name in rendered html (default: ```true```)
+- config.showDate : Include DATE in rendered html (default: ```true```)
 
 **Clock Class Definition** can be found in [Components-Clock](/module-Components-Clock.html)
 
-
 ## Customize
+
 The Clock component will generate the following HTML for each clock you create :
 
 ```html
@@ -234,14 +253,14 @@ For example to set minutes color to red just add :
 
 ```css
 #clock1 .minutes {
-	color: red;
+  color: red;
 }
 ```  
 
 Note that we are also using the Clock CSS `#id` to target only one Clock.
 
+## CHANGELOG
 
-# CHANGELOG
 - 1.0.0 : Initial start
 - 1.0.0 : Project structure
 - 1.1.0 : Clock components
