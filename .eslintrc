@@ -6,8 +6,7 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true,
-    "vitest-globals/env": true
+    "node": true
   },
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -24,7 +23,10 @@
     "react/no-did-mount-set-state": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": 0,
-    "react/prop-types": 1
+    "react/prop-types": 1,
+    "react/destructuring-assignment": 0,
+    "react/require-default-props": 0,
+    "import/extensions": [1, { "jsx": "always", "js": "never" }]
   },
   "plugins": [
     "react",

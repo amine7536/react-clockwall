@@ -46,12 +46,12 @@ class Clock extends Component {
     super(props);
 
     /* Set Default Props Values */
-    if (this.props.config.id === undefined) { this.props.config.id = `pixelfactory-${this.props.config.town}` }
-    if (this.props.config.locale === undefined) { this.props.config.locale = 'en' }
-    if (this.props.config.showTown === undefined) { this.props.config.showTown = true }
-    if (this.props.config.showTimezone === undefined) { this.props.config.showTimezone = true }
-    if (this.props.config.showDate === undefined) { this.props.config.showDate = true }
-    if (this.props.config.meridiem === undefined) { this.props.config.meridiem = false }
+    if (this.props.config.id === undefined) { this.props.config.id = `pixelfactory-${this.props.config.town}`; }
+    if (this.props.config.locale === undefined) { this.props.config.locale = 'en'; }
+    if (this.props.config.showTown === undefined) { this.props.config.showTown = true; }
+    if (this.props.config.showTimezone === undefined) { this.props.config.showTimezone = true; }
+    if (this.props.config.showDate === undefined) { this.props.config.showDate = true; }
+    if (this.props.config.meridiem === undefined) { this.props.config.meridiem = false; }
 
     /* Set Initlal State */
     this.state = {
@@ -169,30 +169,45 @@ class Clock extends Component {
 
     return (
       <div id={config.id} className="clock">
-      {config.showTown ?
-        <h1 className="town">{config.town}</h1> :
-      null}
-      {config.showTimezone ?
-        <h2 className="timezone">{config.timezone} {timezone}</h2> :
-      null}
+        {config.showTown
+          ? <h1 className="town">{config.town}</h1>
+          : null}
+        {config.showTimezone
+          ? (
+            <h2 className="timezone">
+              {config.timezone}
+              {' '}
+              {timezone}
+            </h2>
+          )
+          : null}
         <ul className="time">
           <li className="hours">{hours}</li>
           <li className="points">:</li>
           <li className="minutes">{minutes}</li>
           <li className="sectional">
-              <sup className="seconds">{seconds}</sup>
-              {config.meridiem ?
-                <sub className="meridiem">{meridiem}</sub> :
-              null}
+            <sup className="seconds">{seconds}</sup>
+            {config.meridiem
+              ? <sub className="meridiem">{meridiem}</sub>
+              : null}
           </li>
         </ul>
-      {config.showDate ?
-        <h1 className="date">{dayName} {day} {monthName} {year}</h1> :
-      null}
+        {config.showDate
+          ? (
+            <h1 className="date">
+              {dayName}
+              {' '}
+              {day}
+              {' '}
+              {monthName}
+              {' '}
+              {year}
+            </h1>
+          )
+          : null}
       </div>
     );
   }
-
 }
 
 /**
