@@ -1,30 +1,56 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _react = require("react");
-var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
-var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * @fileOverview Clock Component
  * @author amine.benseddik@pixelfactory.io
  * @module Components
  */
+import { useState, useEffect, useMemo } from 'react';
+import moment from 'moment-timezone';
 
 /**
  * Clock configuration interface
  */
+export interface ClockConfig {
+  /** Required - IANA timezone (e.g., 'Europe/Paris') */
+  timezone: string;
+  /** Required - Town name to display */
+  town: string;
+  /** Optional - CSS id (default: 'pixelfactory-{town}') */
+  id?: string;
+  /** Optional - ISO language code (default: 'en') */
+  locale?: string;
+  /** Optional - Show town name (default: true) */
+  showTown?: boolean;
+  /** Optional - Show timezone (default: true) */
+  showTimezone?: boolean;
+  /** Optional - Show date (default: true) */
+  showDate?: boolean;
+  /** Optional - Use 12-hour format (default: false) */
+  meridiem?: boolean;
+}
 
 /**
  * Clock component props
  */
+export interface ClockProps {
+  /** Clock configuration object */
+  config: ClockConfig;
+}
 
 /**
  * Time and date information
  */
+interface MomentData {
+  day: number;
+  dayName: string;
+  month: number;
+  monthName: string;
+  year: number;
+  hours: string;
+  minutes: string;
+  seconds: string;
+  meridiem: 'AM' | 'PM';
+  timezone: string;
+}
 
 /**
  * Clock React Component
@@ -50,11 +76,9 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  *
  * @requires moment-timezone
  */
-const Clock = ({
-  config
-}) => {
+function Clock({ config }: ClockProps) {
   // Apply default values using useMemo to avoid recalculation
-  const clockConfig = (0, _react.useMemo)(() => ({
+  const clockConfig = useMemo<Required<ClockConfig>>(() => ({
     id: config.id ?? `pixelfactory-${config.town}`,
     timezone: config.timezone,
     town: config.town,
@@ -62,7 +86,7 @@ const Clock = ({
     showTown: config.showTown ?? true,
     showTimezone: config.showTimezone ?? true,
     showDate: config.showDate ?? true,
-    meridiem: config.meridiem ?? false
+    meridiem: config.meridiem ?? false,
   }), [config]);
 
   /**
@@ -73,18 +97,22 @@ const Clock = ({
    * @param useMeridiem - Whether to use 12-hour format
    * @returns Time and date information object
    */
-  const getMoment = (timezone, locale, useMeridiem) => {
-    _momentTimezone.default.locale(locale);
-    const now = (0, _momentTimezone.default)().tz(timezone);
+  const getMoment = (
+    timezone: string,
+    locale: string,
+    useMeridiem: boolean,
+  ): MomentData => {
+    moment.locale(locale);
+    const now = moment().tz(timezone);
     const tz = now.format('z');
 
     // Day
-    const weekdays = _momentTimezone.default.weekdays();
+    const weekdays = moment.weekdays();
     const dayName = weekdays[now.day()] ?? '';
     const day = now.date();
 
     // Month
-    const months = _momentTimezone.default.months();
+    const months = moment.months();
     const monthName = months[now.month()] ?? '';
     const month = now.month();
 
@@ -93,7 +121,7 @@ const Clock = ({
 
     // Time
     let hours = now.hour();
-    const meridiem = hours < 12 ? 'AM' : 'PM';
+    const meridiem: 'AM' | 'PM' = hours < 12 ? 'AM' : 'PM';
     hours = useMeridiem && meridiem === 'PM' ? hours - 12 : hours;
     const minutes = now.minute();
     const seconds = now.second();
@@ -109,17 +137,23 @@ const Clock = ({
       minutes: (minutes < 10 ? '0' : '') + minutes,
       seconds: (seconds < 10 ? '0' : '') + seconds,
       meridiem,
-      timezone: tz
+      timezone: tz,
     };
   };
 
   // State for current date/time
-  const [currentDate, setCurrentDate] = (0, _react.useState)(() => getMoment(clockConfig.timezone, clockConfig.locale, clockConfig.meridiem));
+  const [currentDate, setCurrentDate] = useState<MomentData>(() => getMoment(
+    clockConfig.timezone,
+    clockConfig.locale,
+    clockConfig.meridiem,
+  ));
 
   // Effect to update time every second
-  (0, _react.useEffect)(() => {
+  useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentDate(getMoment(clockConfig.timezone, clockConfig.locale, clockConfig.meridiem));
+      setCurrentDate(
+        getMoment(clockConfig.timezone, clockConfig.locale, clockConfig.meridiem),
+      );
     }, 1000);
 
     // Cleanup interval on unmount
@@ -127,6 +161,7 @@ const Clock = ({
       clearInterval(intervalId);
     };
   }, [clockConfig.timezone, clockConfig.locale, clockConfig.meridiem]);
+
   const {
     timezone,
     hours,
@@ -136,42 +171,41 @@ const Clock = ({
     dayName,
     day,
     monthName,
-    year
+    year,
   } = currentDate;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    id: clockConfig.id,
-    className: "clock",
-    children: [clockConfig.showTown && /*#__PURE__*/(0, _jsxRuntime.jsx)("h1", {
-      className: "town",
-      children: clockConfig.town
-    }), clockConfig.showTimezone && /*#__PURE__*/(0, _jsxRuntime.jsxs)("h2", {
-      className: "timezone",
-      children: [clockConfig.timezone, " ", timezone]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("ul", {
-      className: "time",
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
-        className: "hours",
-        children: hours
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
-        className: "points",
-        children: ":"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
-        className: "minutes",
-        children: minutes
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("li", {
-        className: "sectional",
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("sup", {
-          className: "seconds",
-          children: seconds
-        }), clockConfig.meridiem && /*#__PURE__*/(0, _jsxRuntime.jsx)("sub", {
-          className: "meridiem",
-          children: meridiem
-        })]
-      })]
-    }), clockConfig.showDate && /*#__PURE__*/(0, _jsxRuntime.jsxs)("h1", {
-      className: "date",
-      children: [dayName, " ", day, " ", monthName, " ", year]
-    })]
-  });
-};
-var _default = exports.default = Clock;
+
+  return (
+    <div id={clockConfig.id} className="clock">
+      {clockConfig.showTown && <h1 className="town">{clockConfig.town}</h1>}
+      {clockConfig.showTimezone && (
+        <h2 className="timezone">
+          {clockConfig.timezone}
+          {' '}
+          {timezone}
+        </h2>
+      )}
+      <ul className="time">
+        <li className="hours">{hours}</li>
+        <li className="points">:</li>
+        <li className="minutes">{minutes}</li>
+        <li className="sectional">
+          <sup className="seconds">{seconds}</sup>
+          {clockConfig.meridiem && <sub className="meridiem">{meridiem}</sub>}
+        </li>
+      </ul>
+      {clockConfig.showDate && (
+        <h1 className="date">
+          {dayName}
+          {' '}
+          {day}
+          {' '}
+          {monthName}
+          {' '}
+          {year}
+        </h1>
+      )}
+    </div>
+  );
+}
+
+export default Clock;

@@ -6,7 +6,7 @@ describe('Example Test Suite', () => {
   });
 
   it('should handle strings', () => {
-    expect('hello' + ' ' + 'world').toBe('hello world');
+    expect('hello world').toBe('hello world');
   });
 
   it('should work with arrays', () => {
