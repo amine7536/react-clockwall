@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Clock from './components/Clock';
 
 window.React = React;
@@ -17,11 +17,11 @@ const clocks = [
   { id: 'clock10', town: 'Sao Paulo', timezone: 'America/Sao_Paulo', locale: 'pt' },
 ];
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('content'));
+root.render(
   <div className="flex-container clockwall">
     {clocks.map(clock =>
       <Clock key={clock.id} config={clock} />
     )}
   </div>
-  , document.getElementById('content')
 );

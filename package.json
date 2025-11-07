@@ -36,10 +36,12 @@
     "babel-istanbul": "^0.12.1",
     "moment": "^2.10.6",
     "moment-timezone": "^0.5.0",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "prop-types": "^15.8.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^16.1.0",
     "autoprefixer": "7.1.2",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
@@ -73,7 +75,6 @@
     "postcss-nested": "2.1.2",
     "postcss-simple-extend": "^1.0.0",
     "postcss-simple-vars": "4.1.0",
-    "react-addons-test-utils": "^15.0.1",
     "rimraf": "^2.5.0",
     "run-sequence": "2.1.0",
     "vinyl-buffer": "^1.0.0",
