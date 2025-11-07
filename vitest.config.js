@@ -11,12 +11,17 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
+      include: ['src/**/*.{js,jsx}'],
       exclude: [
         'node_modules/',
         'test/',
         'dist/',
         'lib/',
+        'docs/',
+        'demo/',
         '*.config.js',
+        '**/*.config.js',
+        'gulpfile.babel.js',
       ],
     },
   },
