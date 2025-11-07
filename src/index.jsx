@@ -1,6 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Clock from './components/Clock';
+import Clock from './components/Clock.jsx';
+import './styles/reset.css';
+import './styles/main.css';
+import './styles/theme.css';
 
 window.React = React;
 

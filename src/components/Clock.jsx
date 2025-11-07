@@ -6,7 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment-timezone';
-import './Clock-locales';
+// Locales loaded on demand by moment when needed
+// import './Clock-locales';
 
 /**
 * Clock React Component
