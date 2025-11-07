@@ -1,4 +1,4 @@
-# React-Clockwall [![Build Status](https://img.shields.io/travis/amine7536/react-clockwall/master.svg?style=flat-square)](https://travis-ci.org/amine7536/react-clockwall) [![Coverage Status](https://img.shields.io/coveralls/amine7536/react-clockwall/master.svg?style=flat-square)](https://coveralls.io/github/amine7536/react-clockwall?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5702884dfcd19a00415b002b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5702884dfcd19a00415b002b)
+# React-Clockwall [![CI](https://github.com/amine7536/react-clockwall/actions/workflows/ci.yml/badge.svg)](https://github.com/amine7536/react-clockwall/actions/workflows/ci.yml)
 
 Digital Clock made with React JS.
 
@@ -21,8 +21,9 @@ Digital Clock made with React JS.
 ## Stack
 
 - __NodeJS__ : [https://nodejs.org](https://nodejs.org)
-- __BabelJS__ : [https://babeljs.io](https://babeljs.io)
-- __ReactJS__ : [https://facebook.github.io/react/](https://facebook.github.io/react/)
+- __ReactJS__ : [https://react.dev](https://react.dev)
+- __Vite__ : [https://vitejs.dev](https://vitejs.dev)
+- __Vitest__ : [https://vitest.dev](https://vitest.dev)
 
 ## Preview
 
@@ -35,23 +36,9 @@ Open ```demo/index.html``` in your Browser. Or here : [https://pixelfactory.io/p
 
 **Please note that any commands we tell you to run must be ran from the project's root folder.**
 
-## Gulp task runner
+## Prerequisites
 
-[Gulp](http://gulpjs.com) is an Task / Build runner. This project relies on Gulp for automation of tasks.  
-In order to use [Gulp](http://gulpjs.com) you will need to have [Node.js](https://nodejs.org) installed on your computer. Also insure that you have [NPM](https://www.npmjs.org/) installed. You can check if these are installed properly by opening up a Terminal (Linux or Mac) or Command Prompt (Windows) and entering the command: ```node --version``` and ```npm --version```. These commands should output something similar to "v5.1.1" and "3.3.12" respectively.
-
-Once you have installed these programs, you'll need to get **gulp**. You can achieve this by running the following command:
-
-```bash
-user@pixelfactory.io> npm install -g gulp
-```
-
-Now you should be able to exectue the command **gulp** :
-
-```bash
-user@pixelfactory.io> gulp --version
-CLI version 3.9.0
-```
+This project requires [Node.js](https://nodejs.org) 18+ and [NPM](https://www.npmjs.org/) to be installed on your computer. You can check if these are installed properly by opening up a Terminal (Linux or Mac) or Command Prompt (Windows) and entering the command: ```node --version``` and ```npm --version```.
 
 ## Install dependencies
 
@@ -67,23 +54,7 @@ user@pixelfactory.io> npm install
 Once you have installed the dependencies using [NPM](https://www.npmjs.org/) you can build the project using the command :
 
 ```bash
-user@pixelfactory.io> npm run build
-
-> clockwall@1.4.2 build /Dev/pixelfactory.io/clockwall
-> gulp build
-
-[16:47:27] Requiring external module babel-core/register
-[16:47:29] Using gulpfile /Dev/pixelfactory.io/clockwall/gulpfile.babel.js
-[16:47:29] Starting 'build'...
-[16:47:29] Starting 'clean'...
-[16:47:29] Finished 'clean' after 5.42 ms
-[16:47:29] Starting 'browserify'...
-[16:47:29] Finished 'browserify' after 36 ms
-[16:47:29] Starting 'styles'...
-[16:47:29] Finished 'styles' after 9.84 ms
-[16:47:29] Starting 'htmlReplace'...
-[16:47:29] Finished 'htmlReplace' after 3.13 ms
-[16:47:29] Finished 'build' after 60 ms
+npm run build
 ```
 
 This will create a new folder ```dist``` with the following files :
@@ -107,62 +78,27 @@ This will create a new folder ```dist``` with the following files :
 
 ## Development Server
 
-We've made it easy to develop and test on your local machine. Once you've installed the dependencies and built your project, you can start a local server by running the command ```npm run watch```. This will start a local server and open up your browser.
+We've made it easy to develop and test on your local machine. Once you've installed the dependencies, you can start a local development server by running:
 
 ```bash
-user@pixelfactory.io> npm run watch
-
-> clockwall@1.4.1 watch /Dev/pixelfactory.io/clockwall
-> gulp watch
-
-[23:10:13] Requiring external module babel-core/register
-[23:10:20] Using gulpfile /Dev/pixelfactory.io/clockwall/gulpfile.babel.js
-[23:10:20] Starting 'watch'...
-[23:10:20] Starting 'clean'...
-[23:10:20] Finished 'clean' after 34 ms
-[23:10:20] Starting 'browserSync'...
-[23:10:21] Finished 'browserSync' after 139 ms
-[23:10:21] Starting 'watchTask'...
-[23:10:21] Finished 'watchTask' after 13 ms
-[23:10:21] Starting 'watchify'...
-[23:10:21] Starting 'styles'...
-[23:10:21] Finished 'styles' after 7.55 ms
-[23:10:21] Starting 'lint'...
-[23:10:21] Finished 'lint' after 170 ms
-[BS] Access URLs:
--------------------------------------
-      Local: http://localhost:3000
-   External: http://172.16.1.174:3000
--------------------------------------
-         UI: http://localhost:3001
-UI External: http://172.16.1.174:3001
--------------------------------------
-[BS] Serving files from: ./
-[BS] 4 files changed (main.css.map, main.css, reset.css.map, reset.css)
-[BS] 1 file changed (app.js)
-[23:10:26] Finished 'watchify' after 5.39 s
-[23:10:26] Finished 'watch' after 5.58 s
+npm run dev
 ```
 
-The Development environment uses [browserSync](https://www.browsersync.io) to enable **LiveReload**. Your browser will be automatically as you change HTML, CSS and Javascript files or other files under ```src``` folder.
+This will start the Vite development server with hot module replacement (HMR) at http://localhost:5173
 
-## Running test
+The development environment uses Vite's built-in HMR. Your browser will automatically reload as you change files under the ```src``` folder.
 
-The project test can be found in the folder ```test/components```. You can run the tests by running the command: ```npm test```
+## Running tests
+
+The project tests can be found in the folder ```test```. You can run the tests by running the command: ```npm test```
 
 ```bash
-user@pixelfactory.io> npm test
-
-> clockwall@1.4.2 test /Dev/pixelfactory.io/clockwall
-> mocha --reporter nyan --compilers js:babel/register --recursive
-
- 24  -_-_-_-_-_-_-_-_-_-_-_-_-_,------,
- 0   -_-_-_-_-_-_-_-_-_-_-_-_-_|   /\_/\
- 0   -_-_-_-_-_-_-_-_-_-_-_-_-^|__( ^ .^)
-     -_-_-_-_-_-_-_-_-_-_-_-_-  ""  ""
-
-  24 passing (78ms)
+npm test
 ```
+
+Additional test commands:
+- `npm run test:ui` - Run tests with interactive UI
+- `npm run test:coverage` - Run tests with coverage report
 
 ## Getting started
 
