@@ -3,5 +3,6 @@ node_modules
 .tmp
 .idea
 dist
+lib
 npm-debug.log
 coverage
