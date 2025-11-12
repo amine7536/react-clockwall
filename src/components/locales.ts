@@ -103,5 +103,5 @@ const localeMap: Record<string, Locale> = {
  * Falls back to English (enUS) if locale not found
  */
 export function getLocale(localeCode: string): Locale {
-  return localeMap[localeCode] || localeMap[localeCode.toLowerCase()] || enUS;
+  return localeMap[localeCode] ?? localeMap[localeCode.toLowerCase()] ?? enUS;
 }
