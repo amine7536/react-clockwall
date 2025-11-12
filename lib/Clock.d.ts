@@ -48,8 +48,9 @@ export interface ClockProps {
  * - **config.showDate** : Include DATE in rendered html (default: `true`)
  * - **config.meridiem** : Use 12 hour clock (default: `false`)
  *
- * @requires moment-timezone
+ * @requires date-fns
+ * @requires @date-fns/tz
  */
-declare const Clock: React.FC<ClockProps>;
+declare function Clock({ config }: ClockProps): import("react/jsx-runtime").JSX.Element;
 export default Clock;
 //# sourceMappingURL=Clock.d.ts.map
