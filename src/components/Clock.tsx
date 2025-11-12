@@ -4,7 +4,9 @@
  * @module Components
  */
 import { useState, useEffect, useMemo } from 'react';
-import moment from 'moment-timezone';
+import { TZDate } from '@date-fns/tz';
+import { format, getDate, getMonth, getYear, getHours, getMinutes, getSeconds } from 'date-fns';
+import { getLocale } from './locales';
 
 /**
  * Clock configuration interface
@@ -74,7 +76,8 @@ interface MomentData {
  * - **config.showDate** : Include DATE in rendered html (default: `true`)
  * - **config.meridiem** : Use 12 hour clock (default: `false`)
  *
- * @requires moment-timezone
+ * @requires date-fns
+ * @requires @date-fns/tz
  */
 function Clock({ config }: ClockProps) {
   // Apply default values using useMemo to avoid recalculation
@@ -90,9 +93,9 @@ function Clock({ config }: ClockProps) {
   }), [config]);
 
   /**
-   * Get current time and date using moment.js
+   * Get current time and date using date-fns
    *
-   * @param timezone - ISO Timezone
+   * @param timezone - IANA Timezone
    * @param locale - ISO Language Code
    * @param useMeridiem - Whether to use 12-hour format
    * @returns Time and date information object
@@ -102,29 +105,32 @@ function Clock({ config }: ClockProps) {
     locale: string,
     useMeridiem: boolean,
   ): MomentData => {
-    moment.locale(locale);
-    const now = moment().tz(timezone);
-    const tz = now.format('z');
+    // Create a date in the specified timezone
+    const now = new TZDate(new Date(), timezone);
+
+    // Get the date-fns locale object
+    const dateFnsLocale = getLocale(locale);
+
+    // Get timezone abbreviation (e.g., 'PST', 'EST')
+    const tz = format(now, 'zzz', { locale: dateFnsLocale });
 
     // Day
-    const weekdays = moment.weekdays();
-    const dayName = weekdays[now.day()] ?? '';
-    const day = now.date();
+    const dayName = format(now, 'EEEE', { locale: dateFnsLocale });
+    const day = getDate(now);
 
     // Month
-    const months = moment.months();
-    const monthName = months[now.month()] ?? '';
-    const month = now.month();
+    const monthName = format(now, 'MMMM', { locale: dateFnsLocale });
+    const month = getMonth(now);
 
     // Year
-    const year = now.year();
+    const year = getYear(now);
 
     // Time
-    let hours = now.hour();
+    let hours = getHours(now);
     const meridiem: 'AM' | 'PM' = hours < 12 ? 'AM' : 'PM';
     hours = useMeridiem && meridiem === 'PM' ? hours - 12 : hours;
-    const minutes = now.minute();
-    const seconds = now.second();
+    const minutes = getMinutes(now);
+    const seconds = getSeconds(now);
 
     // Return time object
     return {

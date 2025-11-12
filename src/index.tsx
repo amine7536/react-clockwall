@@ -1,7 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import Clock, { ClockConfig } from './components/Clock';
-import './components/Clock-locales';
 import './styles/reset.css';
 import './styles/main.css';
 import './styles/theme.css';
