@@ -27,7 +27,7 @@
     "lint": "eslint src test --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint src test --ext .js,.jsx,.ts,.tsx --fix",
     "build-lib": "vite build --config vite.lib.config.ts",
-    "build-docs": "jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template --readme README.md",
+    "build-docs": "typedoc",
     "typecheck": "tsc --noEmit"
   },
   "main": "lib/Clock.js",
@@ -62,6 +62,7 @@
     "jsdom": "^25.0.1",
     "postcss": "^8.4.49",
     "postcss-nested": "^7.0.2",
+    "typedoc": "^0.28.14",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.3",
     "vite": "^6.0.3",
