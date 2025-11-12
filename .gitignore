@@ -6,3 +6,4 @@ dist
 lib
 npm-debug.log
 coverage
+docs
