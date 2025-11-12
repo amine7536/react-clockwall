@@ -24,7 +24,6 @@ export default defineConfig({
         '*.config.ts',
         '**/*.config.js',
         '**/*.config.ts',
-        'gulpfile.babel.js',
       ],
     },
   },

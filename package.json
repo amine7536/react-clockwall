@@ -26,7 +26,7 @@
     "test:coverage": "vitest --coverage",
     "lint": "eslint src test --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint src test --ext .js,.jsx,.ts,.tsx --fix",
-    "build-lib": "tsc --project tsconfig.lib.json && babel --out-dir lib/ src/components/ --extensions .ts,.tsx",
+    "build-lib": "vite build --config vite.lib.config.ts",
     "build-docs": "jsdoc -c jsdoc.json -t ./node_modules/ink-docstrap/template --readme README.md",
     "typecheck": "tsc --noEmit"
   },
@@ -42,11 +42,6 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.26.5",
-    "@babel/core": "^7.26.5",
-    "@babel/preset-env": "^7.26.5",
-    "@babel/preset-react": "^7.26.5",
-    "@babel/preset-typescript": "^7.28.5",
     "@eslint/js": "^9.39.1",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.3",
@@ -70,6 +65,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.3",
     "vite": "^6.0.3",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^2.1.8"
   }
 }
