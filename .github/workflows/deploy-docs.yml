@@ -1,4 +1,4 @@
-name: Deploy JSDoc to GitHub Pages
+name: Deploy TypeDoc to GitHub Pages
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build JSDoc documentation
+      - name: Build TypeDoc documentation
         run: npm run build-docs
 
       - name: Setup Pages
@@ -44,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './docs/js'
+          path: './docs'
 
   deploy:
     name: Deploy to GitHub Pages

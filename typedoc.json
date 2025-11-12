@@ -1,0 +1,13 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src/components"],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "plugin": [],
+  "name": "pixelfactory.io Clock",
+  "includeVersion": true,
+  "readme": "README.md",
+  "navigationLinks": {
+    "GitHub": "https://github.com/amine7536/react-clockwall"
+  }
+}
