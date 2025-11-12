@@ -35,8 +35,8 @@
   "author": "pixelfactory.io",
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.30.1",
-    "moment-timezone": "^0.5.46",
+    "@date-fns/tz": "^1.4.1",
+    "date-fns": "^4.1.0",
     "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
@@ -52,7 +52,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/moment-timezone": "^0.5.13",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
