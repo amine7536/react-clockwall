@@ -28,7 +28,9 @@
     "lint:fix": "eslint src test --ext .js,.jsx,.ts,.tsx --fix",
     "build-lib": "vite build --config vite.lib.config.ts",
     "build-docs": "typedoc",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "main": "lib/Clock.js",
   "types": "lib/Clock.d.ts",
@@ -42,7 +44,11 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.2",
     "@eslint/js": "^9.39.1",
+    "@storybook/addon-docs": "^10.0.7",
+    "@storybook/addon-onboarding": "^10.0.7",
+    "@storybook/react-vite": "^10.0.7",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
@@ -57,6 +63,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-storybook": "^10.0.7",
     "ink-docstrap": "^1.1.0",
     "jsdoc": "^4.0.4",
     "jsdom": "^25.0.1",
