@@ -1,3 +1,4 @@
+/* Original color schemes */
 #clock1, #clock6 {
 	background: #05668D;
 	color: #B3D1DC;
@@ -21,4 +22,151 @@
 #clock5, #clock10 {
 	background: #F0F3BD;
 	color: #5F5A57;
+}
+
+/* New themed color schemes for Storybook */
+
+/* Ocean Blue - Deep ocean vibes with cyan highlights */
+#ocean-blue-clock {
+	background: #003049;
+	color: #90E0EF;
+}
+
+#ocean-blue-clock .town {
+	color: #00B4D8;
+}
+
+#ocean-blue-clock .time {
+	color: #CAF0F8;
+}
+
+/* Sunset Orange - Warm sunset colors */
+#sunset-orange-clock {
+	background: #D62828;
+	color: #FCBF49;
+}
+
+#sunset-orange-clock .town {
+	color: #F77F00;
+}
+
+#sunset-orange-clock .time {
+	color: #FFF3B0;
+}
+
+/* Cyberpunk Neon - Futuristic neon aesthetic */
+#cyberpunk-neon-clock {
+	background: #0A0E27;
+	color: #00FFF0;
+	border: 2px solid #FF00FF;
+}
+
+#cyberpunk-neon-clock .town {
+	color: #FF00FF;
+	text-shadow: 0 0 10px #FF00FF;
+}
+
+#cyberpunk-neon-clock .time {
+	color: #00FFF0;
+	text-shadow: 0 0 20px #00FFF0;
+}
+
+/* Forest Green - Nature inspired palette */
+#forest-green-clock {
+	background: #1B4332;
+	color: #B7E4C7;
+}
+
+#forest-green-clock .town {
+	color: #95D5B2;
+}
+
+#forest-green-clock .time {
+	color: #D8F3DC;
+}
+
+/* Purple Dream - Soft lavender and purple tones */
+#purple-dream-clock {
+	background: #240046;
+	color: #E0AAFF;
+}
+
+#purple-dream-clock .town {
+	color: #C77DFF;
+}
+
+#purple-dream-clock .time {
+	color: #F0C2FF;
+}
+
+/* Midnight - Dark sophisticated blues */
+#midnight-clock {
+	background: #14213D;
+	color: #E5E5E5;
+}
+
+#midnight-clock .town {
+	color: #FCA311;
+}
+
+#midnight-clock .time {
+	color: #FFFFFF;
+}
+
+/* Retro Amber - Classic terminal look */
+#retro-amber-clock {
+	background: #1A1A1A;
+	color: #FFB000;
+	font-family: 'Courier New', monospace;
+}
+
+#retro-amber-clock .town {
+	color: #FFA500;
+}
+
+#retro-amber-clock .time {
+	color: #FFD700;
+	text-shadow: 0 0 5px #FFB000;
+}
+
+/* Cotton Candy - Soft pastel sweetness */
+#cotton-candy-clock {
+	background: #FFC8DD;
+	color: #480CA8;
+}
+
+#cotton-candy-clock .town {
+	color: #560BAD;
+}
+
+#cotton-candy-clock .time {
+	color: #3C096C;
+}
+
+/* Cherry Blossom - Delicate pink and white */
+#cherry-blossom-clock {
+	background: #FFCAD4;
+	color: #9D4EDD;
+}
+
+#cherry-blossom-clock .town {
+	color: #C77DFF;
+}
+
+#cherry-blossom-clock .time {
+	color: #7B2CBF;
+}
+
+/* Arctic Ice - Cool crisp winter palette */
+#arctic-ice-clock {
+	background: #EDF6F9;
+	color: #006494;
+}
+
+#arctic-ice-clock .town {
+	color: #0077B6;
+}
+
+#arctic-ice-clock .time {
+	color: #023E8A;
 }
