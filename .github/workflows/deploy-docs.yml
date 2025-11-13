@@ -1,4 +1,4 @@
-name: Deploy TypeDoc to GitHub Pages
+name: Deploy Documentation to GitHub Pages
 
 on:
   push:
@@ -38,13 +38,128 @@ jobs:
       - name: Build TypeDoc documentation
         run: npm run build-docs
 
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Combine documentation
+        run: |
+          mkdir -p _site
+          mkdir -p _site/api
+          mkdir -p _site/storybook
+          cp -r docs/* _site/api/
+          cp -r storybook-static/* _site/storybook/
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>React ClockWall Documentation</title>
+            <style>
+              * { margin: 0; padding: 0; box-sizing: border-box; }
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+              }
+              .container {
+                max-width: 800px;
+                background: white;
+                border-radius: 20px;
+                padding: 3rem;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+              }
+              h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                color: #333;
+              }
+              p {
+                font-size: 1.1rem;
+                color: #666;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+              }
+              .links {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+                margin-top: 2rem;
+              }
+              .card {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding: 2rem;
+                border-radius: 12px;
+                text-decoration: none;
+                color: white;
+                transition: transform 0.2s, box-shadow 0.2s;
+                display: block;
+              }
+              .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+              }
+              .card h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+              }
+              .card p {
+                color: rgba(255,255,255,0.9);
+                font-size: 0.95rem;
+                margin-bottom: 0;
+              }
+              .github {
+                text-align: center;
+                margin-top: 2rem;
+                padding-top: 2rem;
+                border-top: 1px solid #eee;
+              }
+              .github a {
+                color: #667eea;
+                text-decoration: none;
+                font-weight: 500;
+              }
+              .github a:hover {
+                text-decoration: underline;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <h1>🕐 React ClockWall</h1>
+              <p>Digital clocks component for React with timezone support. Choose your documentation type below:</p>
+
+              <div class="links">
+                <a href="./storybook/" class="card">
+                  <h2>📚 Storybook</h2>
+                  <p>Interactive component examples and visual documentation</p>
+                </a>
+
+                <a href="./api/" class="card">
+                  <h2>📖 API Reference</h2>
+                  <p>Complete TypeScript API documentation with TypeDoc</p>
+                </a>
+              </div>
+
+              <div class="github">
+                <a href="https://github.com/amine7536/react-clockwall" target="_blank">View on GitHub →</a>
+              </div>
+            </div>
+          </body>
+          </html>
+          EOF
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './docs'
+          path: './_site'
 
   deploy:
     name: Deploy to GitHub Pages
