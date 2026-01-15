@@ -22,13 +22,14 @@ Digital Clock made with React JS.
 
 - __NodeJS__ : [https://nodejs.org](https://nodejs.org)
 - __ReactJS__ : [https://react.dev](https://react.dev)
+- __TypeScript__ : [https://www.typescriptlang.org](https://www.typescriptlang.org)
 - __Vite__ : [https://vitejs.dev](https://vitejs.dev)
 - __Vitest__ : [https://vitest.dev](https://vitest.dev)
+- __date-fns__ : [https://date-fns.org](https://date-fns.org)
 
 ## Preview
 
-A Demo of the Clock component is available in folder `demo`.
-Open ```demo/index.html``` in your Browser. Or here : [https://pixelfactory.io/projects/clockwall/](https://pixelfactory.io/projects/clockwall/)
+A Demo of the Clock component is available here: [https://amine7536.github.io/react-clockwall](https://amine7536.github.io/react-clockwall)
 
 ![Clockwall-Demo](https://raw.githubusercontent.com/amine7536/clockwall/master/docs/js/img/clockwall-demo.png)
 
@@ -84,7 +85,7 @@ We've made it easy to develop and test on your local machine. Once you've instal
 npm run dev
 ```
 
-This will start the Vite development server with hot module replacement (HMR) at http://localhost:5173
+This will start the Vite development server with hot module replacement (HMR) at http://localhost:3000
 
 The development environment uses Vite's built-in HMR. Your browser will automatically reload as you change files under the ```src``` folder.
 
@@ -100,18 +101,79 @@ Additional test commands:
 - `npm run test:ui` - Run tests with interactive UI
 - `npm run test:coverage` - Run tests with coverage report
 
+## TypeScript
+
+The project is written in TypeScript for enhanced type safety and developer experience.
+
+### Type Checking
+
+Run TypeScript type checking without emitting files:
+
+```bash
+npm run typecheck
+```
+
+### Building the Library
+
+Build the library with TypeScript declarations:
+
+```bash
+npm run build-lib
+```
+
+This generates JavaScript and TypeScript declaration files (`.d.ts`) in the `lib` folder.
+
+### API Documentation
+
+Generate TypeDoc documentation:
+
+```bash
+npm run build-docs
+```
+
+## Storybook
+
+The project includes Storybook for component development and documentation.
+
+### Running Storybook
+
+Start Storybook development server on port 6006:
+
+```bash
+npm run storybook
+```
+
+### Building Storybook
+
+Build static Storybook:
+
+```bash
+npm run build-storybook
+```
+
 ## Getting started
 
 ### Basic Usage
 
-Simply ```import Clock from './components/Clock';``` and start using the **<Clock/>** component.
+Simply import the Clock component and start using it with TypeScript support.
 
-```javascript
-ReactDOM.render(
-  <div className="flex-container clockwall">
-      <Clock config={{ timezone: 'Europe/Paris', town: 'Paris'}} />
-  </div>
-  , document.getElementById('content')
+```typescript
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import Clock from './components/Clock';
+
+const rootElement = document.getElementById('content');
+if (!rootElement) {
+  throw new Error('Root element not found');
+}
+
+const root = createRoot(rootElement);
+root.render(
+  <StrictMode>
+    <div className="flex-container clockwall">
+      <Clock config={{ timezone: 'Europe/Paris', town: 'Paris' }} />
+    </div>
+  </StrictMode>
 );
 ```
 
@@ -119,51 +181,64 @@ ReactDOM.render(
 
 __Usage__ :
 
-```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Clock from './components/Clock';
+```typescript
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import Clock, { ClockConfig } from './components/Clock';
 
-window.React = React;
-
-var clocks = [
+const clocks: ClockConfig[] = [
   { id: 'clock1', town: 'New York', timezone: 'America/New_York' },
   { id: 'clock2', town: 'الدار البيضاء', timezone: 'Africa/Casablanca', locale: 'fr' },
-  { id: 'clock3', town: 'Paris', timezone: 'Europe/Paris', locale: 'fr' },
+  { id: 'clock3', town: 'Paris', timezone: 'Europe/Paris', locale: 'fr', meridiem: true },
   { id: 'clock4', town: '香港', timezone: 'Asia/Hong_Kong', locale: 'zh-cn' },
   { id: 'clock5', town: 'नई दिल्ली', timezone: 'Asia/Kolkata', locale: 'hi' },
   { id: 'clock6', town: '東京', timezone: 'Asia/Tokyo', locale: 'ja' },
-  { id: 'clock7', town: 'Αθήνα', timezone: 'Europe/Athens', locale: 'el'},
+  { id: 'clock7', town: 'Αθήνα', timezone: 'Europe/Athens', locale: 'el' },
   { id: 'clock8', town: 'Москва', timezone: 'Europe/Moscow', locale: 'ru' },
   { id: 'clock9', town: 'Hà Nội', timezone: 'Asia/Bangkok', locale: 'vi' },
   { id: 'clock10', town: 'Sao Paulo', timezone: 'America/Sao_Paulo', locale: 'pt' },
 ];
 
-ReactDOM.render(
-  <div className="flex-container clockwall">
-    {clocks.map(clock =>
-      <Clock key={clock.id} config={clock} />
-    )}
-  </div>
-  , document.getElementById('content')
-);
+const rootElement = document.getElementById('content');
+if (!rootElement) {
+  throw new Error('Root element not found');
+}
 
+const root = createRoot(rootElement);
+root.render(
+  <StrictMode>
+    <div className="flex-container clockwall">
+      {clocks.map((clock) => (
+        <Clock key={clock.id} config={clock} />
+      ))}
+    </div>
+  </StrictMode>
+);
 ```
 
 __Required params__ :
 
-- config.timezone : [ISO Timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+- config.timezone : [IANA Timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) (e.g., 'Europe/Paris')
 - config.town : Town name to display
 
-__Defaults values__ :
+__Optional params__ (with defaults):
 
-- config.id : CSS ```#id``` (default: ```pixelfactory-town```)
+- config.id : CSS ```#id``` (default: ```pixelfactory-{town}```)
 - config.locale : ISO language code (default: ```en```)
-- config.showTown : Include TOWN name in rendered html (default: ```true```)
-- config.showTimezone : Include TIMEZONE name in rendered html (default: ```true```)
-- config.showDate : Include DATE in rendered html (default: ```true```)
+- config.showTown : Include town name in rendered html (default: ```true```)
+- config.showTimezone : Include timezone in rendered html (default: ```true```)
+- config.showDate : Include date in rendered html (default: ```true```)
+- config.meridiem : Use 12-hour format with AM/PM (default: ```false```)
 
-**Clock Class Definition** can be found in [Components-Clock](/module-Components-Clock.html)
+__TypeScript Support__ :
+
+The Clock component is fully typed with TypeScript. Import the `ClockConfig` interface for type safety:
+
+```typescript
+import Clock, { ClockConfig } from './components/Clock';
+```
+
+**API Documentation** can be generated using TypeDoc: ```npm run build-docs```
 
 ## Customize
 
